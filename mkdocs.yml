@@ -2,52 +2,89 @@ site_name: Nexa 官方文档
 site_description: 智能体原生 (Agent-Native) 编程语言
 theme:
   name: material
-  logo: img/nexa-logo-noframe.png
-  favicon: img/nexa-logo.png
   custom_dir: docs/overrides
   language: zh
-  features:
-    - navigation.sections
-    - navigation.indexes
-    - navigation.top
-    - navigation.footer
-    - search.suggest
-    - search.highlight
-    - search.share
-    - content.code.copy
-    - content.code.annotate
+  logo: img/nexa-logo-noframe.png
+  favicon: img/nexa-logo.png
+  font:
+    text: false
+    code: false
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: deep purple
+      accent: purple
       toggle:
-        icon: material/brightness-7
-        name: 切换至暗色模式
+        icon: material/weather-night
+        name: 切换到深色模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: deep purple
+      accent: purple
       toggle:
-        icon: material/brightness-4
-        name: 切换至亮色模式
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.footer
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.select
+    - toc.follow
+
+plugins:
+  - search
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
-  - tables
+
+extra_css:
+  - stylesheets/fonts.css
+  - stylesheets/extra.css
+  - stylesheets/agent.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js
+  - javascripts/katex.js
+  - javascripts/navigation-accordion.js
+  - javascripts/image-lightbox.js
 
 extra:
   generator: false
 
 nav:
-  - 首页: index.md
-  - 1. 前言与理念 (Preface): preface.md
-  - 2. 基础语法 (Basic Syntax): part1_basic.md
-  - 3. 高级特性 (Advanced Features): part2_advanced.md
-  - 4. 语法扩展 (Syntax Extensions): part3_extensions.md
-  - 5. 未来展望 (Future Outlook): part4_future.md
-  - 6. 编译器设计 (Compiler Design): part5_compiler.md
-  - 7. 最佳实践 (Best Practices): part6_best_practices.md
-  - 8. 社区与生态 (Community & Ecosystem): part7_community.md
+  - 主页:
+    - 首页: index.md
+    - 前言与理念: preface.md
+  - 语法指南:
+    - 基础语法: part1_basic.md
+    - 高级特性: part2_advanced.md
+    - 语法扩展: part3_extensions.md
+  - 深入设计:
+    - 编译器设计: part5_compiler.md
+    - 最佳实践: part6_best_practices.md
+  - 社区与未来:
+    - 未来展望: part4_future.md
+    - 社区与生态: part7_community.md
