@@ -1,0 +1,51 @@
+site_name: Nexa 官方文档
+site_description: 智能体原生 (Agent-Native) 编程语言
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换至暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换至亮色模式
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+
+extra:
+  generator: false
+
+nav:
+  - 首页: index.md
+  - 1. 前言与理念 (Preface): preface.md
+  - 2. 基础语法 (Basic Syntax): part1_basic.md
+  - 3. 高级特性 (Advanced Features): part2_advanced.md
+  - 4. 语法扩展 (Syntax Extensions): part3_extensions.md
+  - 5. 未来展望 (Future Outlook): part4_future.md
+  - 6. 编译器设计 (Compiler Design): part5_compiler.md
+  - 7. 最佳实践 (Best Practices): part6_best_practices.md
+  - 8. 社区与生态 (Community & Ecosystem): part7_community.md
