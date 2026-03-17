@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/overrides/assets/nexa-logo.png" alt="Nexa Logo" width="100" />
+  <img src="docs/img/nexa-logo.png" alt="Nexa Logo" width="100" />
   <h1>Nexa Language 官方中文文档</h1>
   <p><b><i>探索智能体原生 (Agent-Native) 编程新纪元。写流程，而非胶水代码。</i></b></p>
   <p>
