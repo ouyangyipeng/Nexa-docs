@@ -69,26 +69,29 @@ flow main {
 
 ---
 
-## 🎭 多路并发聚合与共识：`join` (Agent Map-Reduce)
+## 🕸️ DAG 拓扑编排：终极多路分叉与聚合 (v0.9.7+)
 
-在涉及智力密集型任务中（诸如投资研报生成或者核心系统疑难代码调优），你需要通过多角色“背靠背”分别独立研究，然后再汇总交叉讨论以得出真知灼见，防止单一大模型的惯性思维和幻觉。
+在涉及智力密集型任务（诸如投资研报生成或者核心系统疑难代码调优）时，必须通过多角色“背靠背”分别独立研究，然后再汇总交叉讨论。Nexa v0.9.7 极具革命性地引入了原生处理复杂图结构（DAG）的拓扑操作符：
 
-这就必然涉及极其复杂的操作系统级机制：**线程分劈与并发聚合收集（Fan-out / Fan-in）**。
-
-在 Nexa 中，并发收集机制被抽象到了如呼吸般自然的 `join()` 关键字内：
+- **分叉操作符 (Fan-out) `|>>`**: 将上游数据并行克隆发送到多个 Agent（类似于并行 Map）。
+- **合流操作符 (Merge / Fan-in) `&>>`**: 等待上一级的并行计算网终结成数组，注入到下游。
+- **分支操作符 (Branch) `??`**: 用于基于布尔或语义条件路由。
 
 ```nexa
-// 摘自 Nexa 代码示例 04_join_consensus.nx
+// 摘自 Nexa 代码示例 15_dag_topology.nx
 flow main {
-    // 这两个操作会被编译器识别，并在 Python 协程底层自动触发并行(Parallel)执行。
-    tech_view = Researcher_Tech.run("Quantum Computing advances");
-    biz_view  = Researcher_Biz.run("Quantum Computing business impact");
-    
-    // Join 将作为阻塞栅栏(Barrier)，同时等待两个流完成，
-    // 将它们产出的数据打包(Packed Context)注入给下游的统筹者 Summarizer。
-    final_report = join(Researcher_Tech, Researcher_Biz).Summarizer("Synthesize the specific reports");
+    topic = "Quantum Computing business impact";
+
+    // 1. 发起分叉(Fan-out)：topic 分别喂给 Tech 与 Biz 两个研究员并行分析
+    // 2. 发起合流(Merge)：等两人产出后，汇总发给 Summarizer 打包撰写最终报告
+    final_report = topic |>> [Researcher_Tech, Researcher_Biz] &>> Summarizer;
+
+    // 分支路由：如果报告异常，使用备用机器人；否则执行日志打印并下发
+    final_report ?? RecoveryBot : Logger;
 }
 ```
+
+这不仅抹除了传统框架内复杂的线程锁死结构并发分劈 (Fork-Join)，更将 Agent 系统编排跨代推向了**响应式函数编程 (FRP)** 和**流式数据处理**的极致巅峰。
 
 ---
 

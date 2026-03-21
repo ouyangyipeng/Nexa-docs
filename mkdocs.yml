@@ -89,6 +89,8 @@ nav:
     - 生态与标准库: part4_ecosystem_and_stdlib.md
   - 深入设计:
     - 编译器设计: part5_compiler.md
+    - 企业级架构特性: part5_enterprise.md
+    - 架构演进与未来(Rust/WASM): part5_architecture_evolution.md
     - 最佳实践: part6_best_practices.md
   - 社区与未来:
     - 未来展望: part4_future.md
