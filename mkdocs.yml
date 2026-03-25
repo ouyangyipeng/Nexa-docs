@@ -1,5 +1,6 @@
 site_name: Nexa 官方文档
 site_description: 智能体原生 (Agent-Native) 编程语言
+site_url: https://ouyangyipeng.github.io/Nexa-docs/
 theme:
   name: material
   custom_dir: docs/overrides
