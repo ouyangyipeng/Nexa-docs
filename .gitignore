@@ -2,3 +2,13 @@ Nexa/
 *.bak
 YatCC/*.bak
 YatCC/
+
+# MkDocs build output
+site/
+
+# Temporary planning files
+plans/
+
+# Temporary documentation files
+docs/tmp.md
+docs/tmp.en.md
