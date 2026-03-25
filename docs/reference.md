@@ -769,15 +769,15 @@ agent RememberingAgent {
 
 ### B. 关键字索引
 
-- [`agent`](#21-agent-声明-agent-declaration) - 定义智能体
-- [`tool`](#22-tool-声明-tool-declaration) - 定义工具
-- [`protocol`](#23-protocol-声明-protocol-declaration) - 定义输出协议
-- [`flow`](#24-flow-声明-flow-declaration) - 定义主流程
-- [`test`](#25-test-声明-test-declaration) - 定义测试
-- [`match`](#41-意图路由-match-intent) - 意图路由
-- [`semantic_if`](#42-语义条件判断-semantic-if) - 语义条件
-- [`loop`](#43-语义循环-loop-until) - 循环控制
-- [`try/catch`](#44-异常处理-trycatch) - 异常处理
+- [`agent`](#21-agent-声明) - 定义智能体
+- [`tool`](#22-tool-声明) - 定义工具
+- [`protocol`](#23-protocol-声明) - 定义输出协议
+- [`flow`](#24-flow-声明) - 定义主流程
+- [`test`](#25-test-声明) - 定义测试
+- [`match`](#41-意图路由) - 意图路由
+- [`semantic_if`](#42-语义条件判断) - 语义条件
+- [`loop`](#43-语义循环) - 循环控制
+- [`try/catch`](#44-异常处理) - 异常处理
 - [`assert`](#51-assert-语句) - 断言验证
 
 ---

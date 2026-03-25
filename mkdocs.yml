@@ -3,7 +3,6 @@ site_description: 智能体原生 (Agent-Native) 编程语言
 theme:
   name: material
   custom_dir: docs/overrides
-  language: zh
   logo: img/nexa-logo-noframe.png
   favicon: img/nexa-logo.png
   font:
@@ -32,8 +31,6 @@ theme:
     - navigation.indexes
     - navigation.footer
     - navigation.tracking
-    - navigation.instant
-    - navigation.instant.progress
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -41,6 +38,75 @@ theme:
     - toc.follow
 
 plugins:
+  - i18n:
+      languages:
+        - locale: zh
+          name: 简体中文
+          default: true
+          site_name: Nexa 官方文档
+          nav_translations:
+            主页: 主页
+            首页: 首页
+            快速入门: 快速入门
+            前言与理念: 前言与理念
+            重构智能体开发范式: 重构智能体开发范式
+            调研背景与技术演进: 调研背景与技术演进
+            典型场景与对比分析: 典型场景与对比分析
+            贡献与参与: 贡献与参与
+            语法指南: 语法指南
+            基础语法: 基础语法
+            高级特性: 高级特性
+            语法扩展: 语法扩展
+            生态与标准库: 生态与标准库
+            深入设计: 深入设计
+            编译器设计: 编译器设计
+            企业级架构特性: 企业级架构特性
+            架构演进与未来(Rust/WASM): 架构演进与未来(Rust/WASM)
+            最佳实践: 最佳实践
+            社区与未来: 社区与未来
+            未来展望: 未来展望
+            社区与生态: 社区与生态
+            参考资源: 参考资源
+            完整示例集合: 完整示例集合
+            常见问题与排查: 常见问题与排查
+            参考手册: 参考手册
+            语言参考: 语言参考
+            CLI 命令参考: CLI 命令参考
+            标准库 API: 标准库 API
+            错误索引: 错误索引
+        - locale: en
+          name: English
+          site_name: Nexa Documentation
+          nav_translations:
+            主页: Home
+            首页: Index
+            快速入门: Quickstart
+            前言与理念: Preface & Philosophy
+            重构智能体开发范式: Reshaping Agent Paradigm
+            调研背景与技术演进: Background & Evolution
+            典型场景与对比分析: Scenarios & Analysis
+            贡献与参与: Contribution
+            语法指南: Grammar Guide
+            基础语法: Basic Syntax
+            高级特性: Advanced Features
+            语法扩展: Grammar Extensions
+            生态与标准库: Ecosystem & Stdlib
+            深入设计: In-depth Design
+            编译器设计: Compiler Design
+            企业级架构特性: Enterprise Features
+            架构演进与未来(Rust/WASM): Architecture Evolution
+            最佳实践: Best Practices
+            社区与未来: Community & Future
+            未来展望: Roadmap
+            社区与生态: Community
+            参考资源: Resources
+            完整示例集合: Example Collection
+            常见问题与排查: Troubleshooting
+            参考手册: Reference Manual
+            语言参考: Language Reference
+            CLI 命令参考: CLI Reference
+            标准库 API: Stdlib API
+            错误索引: Error Index
   - search
 
 markdown_extensions:
