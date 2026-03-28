@@ -290,6 +290,90 @@ UrgentHandler  NormalHandler
 - Simple/complex task routing
 - Different request type handling
 
+### Fire-and-Forget Operator `||`
+
+**Parallel execute** multiple Agents, **without waiting for results**. Suitable for notifications, logging and other "fire-and-forget" scenarios.
+
+```nexa
+// Fire-and-Forget operator
+flow main {
+    notification = "System maintenance scheduled at 2AM";
+    
+    // Parallel send notifications, not waiting for response
+    notification || [EmailBot, SlackBot, SMSBot];
+    
+    // Main flow continues, not blocked
+    print("Notifications sent, continuing with other tasks...");
+}
+```
+
+**Flow Diagram**:
+```
+         Input
+           │
+           ▼
+    ┌──────┴──────┐
+    │             │
+    ▼             ▼
+ EmailBot     SlackBot
+    │             │
+    ▼             ▼
+ (Background)  (Background)
+```
+
+**Use Cases**:
+- Batch notification sending
+- Log recording
+- Non-critical task triggering
+
+### Consensus Operator `&&`
+
+**Parallel execute** multiple Agents, **wait for all results** and perform voting/consensus decision.
+
+```nexa
+// Consensus operator - Multi-expert voting decision
+flow main {
+    question = "Should we approve this loan application?";
+    
+    // Three experts parallel evaluate, wait for all results
+    decision = question && [RiskAnalyst, CreditChecker, ComplianceOfficer];
+    
+    // decision contains all experts' opinions, can vote or comprehensive analysis
+    print(decision);
+}
+```
+
+**Flow Diagram**:
+```
+              Input
+                │
+        ┌───────┼───────┐
+        │       │       │
+        ▼       ▼       ▼
+    ExpertA  ExpertB  ExpertC
+        │       │       │
+        └───────┼───────┘
+                │
+                ▼
+          Consensus Decision
+```
+
+**Use Cases**:
+- Multi-expert review
+- Voting decision systems
+- Cross-validation
+
+### DAG Operator Complete Comparison Table
+
+| Operator | Name | Behavior | Use Case |
+| |-------|------|------|---------|
+| `>>` | Pipeline | Sequential passing | Unidirectional pipeline |
+| `|>>` | Fan-out | Parallel send to multiple Agents | Parallel processing |
+| `&>>` | Merge/Fan-in | Wait for multiple results then merge | Result integration |
+| `??` | Conditional Branch | Select path based on condition | Intelligent routing |
+| `||` | Fire-forget | Parallel execute without waiting | Async notification |
+| `&&` | Consensus | Parallel execute wait for all results | Voting decision |
+
 ### Combining DAG Operators
 
 Build complex processing flows:
@@ -545,6 +629,8 @@ In this chapter, we learned Nexa's advanced orchestration features:
 | Fork Operation | `|>>` | Parallel processing |
 | Merge Operation | `&>>` | Result integration |
 | Conditional Branch | `??` | Path selection |
+| Fire-and-Forget | `||` | Async notification |
+| Consensus | `&&` | Voting decision |
 | Semantic Loop | `loop until` | Iterative optimization |
 | Semantic Condition | `semantic_if` | Intelligent judgment |
 | Exception Handling | `try/catch` | Error handling |

@@ -755,6 +755,145 @@ result = web_search.run(query: "Nexa 语言");
 
 ---
 
+### E303 - 标准库工具未找到
+
+**错误信息**：
+```
+Error E303: Standard library tool not found
+  Tool: 'std.json.parse'
+  Reason: Tool not registered in namespace
+```
+
+**原因**：
+- 工具命名空间拼写错误
+- 使用了不存在的工作
+
+**解决方案**：
+
+```nexa
+// ❌ 错误：命名空间拼写错误
+result = std.json.parse(text);  // 正确
+
+// ❌ 错误：使用旧版命名
+result = std.fs.read(path);     // 新版为 std.fs.file_read
+
+// ✅ 正确：使用完整工具名称
+result = std.json.json_parse(text);
+result = std.fs.file_read(path);
+```
+
+---
+
+## 4.1 AVM 运行时错误 (E4xx) - v1.0-alpha
+
+### E401 - AVM 字节码执行失败
+
+**错误信息**：
+```
+Error E401: AVM bytecode execution failed
+  Opcode: FireForget
+  Reason: Agent list cannot be empty
+```
+
+**原因**：
+- DAG 操作符参数配置错误
+- Agent ID 无效
+
+**解决方案**：
+
+```nexa
+// ❌ 错误：空 Agent 列表
+notification || [];  // 不能使用空列表
+
+// ✅ 正确：至少指定一个 Agent
+notification || [EmailBot];
+```
+
+---
+
+### E402 - WASM 沙盒权限拒绝
+
+**错误信息**：
+```
+Error E402: WASM sandbox permission denied
+  Tool: 'shell_exec'
+  Required: Elevated
+  Current: Standard
+```
+
+**原因**：
+- 工具需要更高权限级别
+- WASM 资源限制超出
+
+**解决方案**：
+
+```nexa
+// 在 agent 定义中声明需要的权限
+agent SystemAgent uses std.shell {
+    role: "系统管理助手",
+    prompt: "...",
+    // 需要在运行时配置中提升权限
+}
+```
+
+---
+
+### E403 - 向量虚存页面溢出
+
+**错误信息**：
+```
+Error E403: Vector memory page overflow
+  Active pages: 256
+  Max allowed: 128
+```
+
+**原因**：
+- 对话历史过长超出内存限制
+- 未启用页面压缩
+
+**解决方案**：
+
+```nexa
+// 使用 memory 属性控制记忆长度
+agent LongConversationBot {
+    role: "长期对话助手",
+    memory: "compressed",  // 启用压缩模式
+    // 或限制记忆轮次
+}
+```
+
+---
+
+### E404 - 共识操作超时
+
+**错误信息**：
+```
+Error E404: Consensus operation timeout
+  Agents: [ExpertA, ExpertB, ExpertC]
+  Waited: 60s
+  Completed: 2/3
+```
+
+**原因**：
+- 共识操作符 `&&` 等待超时
+- 部分 Agent 未响应
+
+**解决方案**：
+
+```nexa
+// 使用 timeout 修饰器控制等待时间
+@timeout(seconds=120)
+agent ConsensusJudge {
+    role: "共识裁决者",
+    prompt: "..."
+}
+
+// 或使用 fire-forget 替代
+decision = question || [ExpertA, ExpertB, ExpertC];
+```
+
+---
+
 ## 5. 警告信息 (W0xx)
 
 警告不会阻止程序运行，但建议修复以避免潜在问题。

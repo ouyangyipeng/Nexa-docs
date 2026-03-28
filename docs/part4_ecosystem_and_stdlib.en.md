@@ -18,13 +18,19 @@ You can directly declare agent permissions through the `uses` keyword, and Nexa 
 
 | Namespace | Description | Main Tools |
 |---------|------|---------|
-| `std.fs` | File system operations | `read`, `write`, `list`, `delete` |
-| `std.http` | HTTP network requests | `get`, `post`, `put`, `delete` |
-| `std.time` | Time-related operations | `now`, `sleep`, `format` |
-| `std.shell` | System terminal commands | `execute` |
-| `std.ask_human` | Human-computer interaction | `call` |
-| `std.json` | JSON processing | `parse`, `stringify` |
-| `std.math` | Mathematical operations | `calculate`, `random` |
+| `std.fs` | File system operations | `file_read`, `file_write`, `file_append`, `file_exists`, `file_list`, `file_delete` |
+| `std.http` | HTTP network requests | `http_get`, `http_post`, `http_put`, `http_delete` |
+| `std.time` | Time and date operations | `time_now`, `time_format`, `time_diff`, `time_sleep`, `time_timestamp` |
+| `std.json` | JSON data processing | `json_parse`, `json_get`, `json_stringify` |
+| `std.text` | Text processing | `text_split`, `text_replace`, `text_upper`, `text_lower` |
+| `std.hash` | Encryption and encoding | `hash_md5`, `hash_sha256`, `base64_encode`, `base64_decode` |
+| `std.math` | Mathematical operations | `math_calc`, `math_random` |
+| `std.regex` | Regular expressions | `regex_match`, `regex_replace` |
+| `std.shell` | Shell commands | `shell_exec`, `shell_which` |
+| `std.ask_human` | Human interaction | `ask_human` |
+
+!!! tip "Namespace Tool Invocation"
+    All standard library tools are called through namespace prefix, e.g. `std.fs.file_read(path)`. For detailed parameters and usage, please refer to [Standard Library Reference](stdlib_reference.en.md).
 
 ---
 

@@ -41,7 +41,8 @@ agent FriendlyBot {
 | `fallback` | string/list | No | - | Backup model configuration |
 | `tools` | list | No | [] | Available tools list |
 | `max_tokens` | int | No | - | Maximum output token count |
-| `timeout` | int | No | 30 | Request timeout (seconds) |
+| `timeout` | int | No | 30 | Execution timeout (seconds) |
+| `retry` | int | No | 3 | Number of retry attempts on failure |
 
 ### Property Detailed Explanation
 
@@ -227,7 +228,77 @@ agent HighAvailabilityBot {
 
 ---
 
-## 🌊 Control Flow Hub: `flow` and `.run()`
+## 🎯 Agent Decorators
+
+v1.0 introduces Agent decorator syntax, allowing metadata configuration to be added before Agent definitions.
+
+### Available Decorators
+
+| Decorator | Parameter | Description |
+|-------|------|------|
+| `@limit` | `max_tokens` | Limit maximum output token count |
+| `@timeout` | `seconds` | Set execution timeout |
+| `@retry` | `count` | Set failure retry count |
+| `@temperature` | `value` | Set model temperature parameter |
+
+### Usage Examples
+
+```nexa
+// Limit output length
+@limit(max_tokens=500)
+agent ConciseBot {
+    prompt: "Answer questions concisely",
+    model: "deepseek/deepseek-chat"
+}
+
+// Set timeout and retry
+@timeout(seconds=60)
+@retry(count=5)
+agent ResilientBot {
+    prompt: "Handle potentially time-consuming tasks",
+    model: "openai/gpt-4"
+}
+
+// Combine multiple decorators
+@limit(max_tokens=1000)
+@timeout(seconds=120)
+@retry(count=3)
+@temperature(value=0.7)
+agent ProductionBot {
+    role: "Production environment intelligent assistant",
+    prompt: "Provide high-quality professional answers",
+    model: "anthropic/claude-3-sonnet"
+}
+```
+
+### Decorator and Property Equivalence
+
+Decorator syntax is equivalent to Agent properties:
+
+```nexa
+// Using decorators
+@timeout(seconds=60)
+@retry(count=3)
+agent Bot1 {
+    prompt: "..."
+}
+
+// Equivalent to using properties
+agent Bot1 {
+    prompt: "...",
+    timeout: 60,
+    retry: 3
+}
+```
+
+!!! tip "Selection Advice"
+    - **Use decorators**: When you need to highlight runtime configurations (like timeout, retry)
+    - **Use properties**: When there are many configurations that need unified management
+    - Both approaches can be mixed, decorators have higher priority
+
+---
+
+## � Control Flow Hub: `flow` and `.run()`
 
 Just defining Agents is like recruiting world-class employees for different departments, but without giving them desks and network access, they remain forever dormant. We need a carrier to activate and orchestrate them. All this happens in `flow`.
 

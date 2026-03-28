@@ -288,6 +288,90 @@ UrgentHandler  NormalHandler
 - 简单/复杂任务分流
 - 不同类型请求处理
 
+### Fire-and-Forget 操作符 `||`
+
+并行执行多个 Agent，**不等待结果**返回。适用于通知、日志等"发射后不管"的场景。
+
+```nexa
+// Fire-and-Forget 操作符
+flow main {
+    notification = "System maintenance scheduled at 2AM";
+    
+    // 并行发送通知，不等待响应
+    notification || [EmailBot, SlackBot, SMSBot];
+    
+    // 主流程继续执行，不会被阻塞
+    print("通知已发送，继续处理其他任务...");
+}
+```
+
+**流程图**：
+```
+         输入
+           │
+           ▼
+    ┌──────┴──────┐
+    │             │
+    ▼             ▼
+ EmailBot     SlackBot
+    │             │
+    ▼             ▼
+ (后台执行)   (后台执行)
+```
+
+**使用场景**：
+- 批量通知发送
+- 日志记录
+- 非关键任务触发
+
+### Consensus 操作符 `&&`
+
+并行执行多个 Agent，**等待所有结果**并进行投票/共识决策。
+
+```nexa
+// Consensus 操作符 - 多专家投票决策
+flow main {
+    question = "Should we approve this loan application?";
+    
+    // 三个专家并行评估，等待所有结果
+    decision = question && [RiskAnalyst, CreditChecker, ComplianceOfficer];
+    
+    // decision 包含所有专家的意见，可进行投票或综合分析
+    print(decision);
+}
+```
+
+**流程图**：
+```
+              输入
+               │
+       ┌───────┼───────┐
+       │       │       │
+       ▼       ▼       ▼
+   ExpertA  ExpertB  ExpertC
+       │       │       │
+       └───────┼───────┘
+               │
+               ▼
+         共识决策
+```
+
+**使用场景**：
+- 多专家评审
+- 投票决策系统
+- 交叉验证
+
+### DAG 操作符完整对照表
+
+| 操作符 | 名称 | 行为 | 使用场景 |
+|-------|------|------|---------|
+| `>>` | 管道 | 顺序传递 | 单向流水线 |
+| `|>>` | 分叉 | 并行发送到多个 Agent | 并行处理 |
+| `&>>` | 合流 | 等待多个结果后合并 | 结果整合 |
+| `??` | 条件分支 | 根据条件选择路径 | 智能路由 |
+| `||` | Fire-forget | 并行执行不等待 | 异步通知 |
+| `&&` | Consensus | 并行执行等待所有结果 | 投票决策 |
+
 ### 组合 DAG 操作符
 
 构建复杂的处理流程：

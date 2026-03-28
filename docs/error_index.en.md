@@ -755,6 +755,145 @@ result = web_search.run(query: "Nexa language");
 
 ---
 
+### E303 - Standard Library Tool Not Found
+
+**Error Message**:
+```
+Error E303: Standard library tool not found
+  Tool: 'std.json.parse'
+  Reason: Tool not registered in namespace
+```
+
+**Cause**:
+- Tool namespace spelling error
+- Using non-existent tool
+
+**Solution**:
+
+```nexa
+// ❌ Wrong: Namespace spelling error
+result = std.json.parse(text);  // Correct
+
+// ❌ Wrong: Using old naming convention
+result = std.fs.read(path);     // New version: std.fs.file_read
+
+// ✅ Correct: Use full tool name
+result = std.json.json_parse(text);
+result = std.fs.file_read(path);
+```
+
+---
+
+## 4.1 AVM Runtime Errors (E4xx) - v1.0-alpha
+
+### E401 - AVM Bytecode Execution Failed
+
+**Error Message**:
+```
+Error E401: AVM bytecode execution failed
+  Opcode: FireForget
+  Reason: Agent list cannot be empty
+```
+
+**Cause**:
+- DAG operator parameter configuration error
+- Invalid Agent ID
+
+**Solution**:
+
+```nexa
+// ❌ Wrong: Empty Agent list
+notification || [];  // Cannot use empty list
+
+// ✅ Correct: Specify at least one Agent
+notification || [EmailBot];
+```
+
+---
+
+### E402 - WASM Sandbox Permission Denied
+
+**Error Message**:
+```
+Error E402: WASM sandbox permission denied
+  Tool: 'shell_exec'
+  Required: Elevated
+  Current: Standard
+```
+
+**Cause**:
+- Tool requires higher permission level
+- WASM resource limit exceeded
+
+**Solution**:
+
+```nexa
+// Declare required permissions in agent definition
+agent SystemAgent uses std.shell {
+    role: "System Management Assistant",
+    prompt: "...",
+    // Need to elevate permissions in runtime configuration
+}
+```
+
+---
+
+### E403 - Vector Memory Page Overflow
+
+**Error Message**:
+```
+Error E403: Vector memory page overflow
+  Active pages: 256
+  Max allowed: 128
+```
+
+**Cause**:
+- Conversation history too long exceeds memory limit
+- Page compression not enabled
+
+**Solution**:
+
+```nexa
+// Use memory property to control memory length
+agent LongConversationBot {
+    role: "Long Conversation Assistant",
+    memory: "compressed",  // Enable compression mode
+    // Or limit memory turns
+}
+```
+
+---
+
+### E404 - Consensus Operation Timeout
+
+**Error Message**:
+```
+Error E404: Consensus operation timeout
+  Agents: [ExpertA, ExpertB, ExpertC]
+  Waited: 60s
+  Completed: 2/3
+```
+
+**Cause**:
+- Consensus operator `&&` wait timeout
+- Some Agents not responding
+
+**Solution**:
+
+```nexa
+// Use timeout decorator to control wait time
+@timeout(seconds=120)
+agent ConsensusJudge {
+    role: "Consensus Judge",
+    prompt: "..."
+}
+
+// Or use fire-forget instead
+decision = question || [ExpertA, ExpertB, ExpertC];
+```
+
+---
+
 ## 5. Warning Messages (W0xx)
 
 Warnings don't prevent program execution, but it's recommended to fix them to avoid potential issues.

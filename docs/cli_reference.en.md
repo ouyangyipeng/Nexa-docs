@@ -17,10 +17,15 @@ Nexa CLI is the command-line interface for the Nexa language, providing compilat
 ```bash
 # Check installed version
 nexa --version
+# Output: Nexa v0.9.7-alpha
 
 # View help information
 nexa --help
 ```
+
+!!! tip "Version Display"
+    The `--version` flag displays the currently installed Nexa version, useful for verifying installation.
+    The latest version is **v0.9.7-alpha** (Python Transpiler) and **v1.0-alpha** (Rust AVM).
 
 ---
 
@@ -351,7 +356,49 @@ secrets:
 
 ---
 
-### 2.3 `nexa doctor` - Environment Diagnosis
+### 2.3 `nexa cache` - Cache Management
+
+Manage Nexa's LLM response cache.
+
+**Syntax**:
+
+```bash
+nexa cache <COMMAND>
+```
+
+**Subcommands**:
+
+| Command | Description |
+|------|------|
+| `clear` | Clear cache directory |
+| `stats` | Show cache statistics |
+| `list` | List cache entries |
+
+**Examples**:
+
+```bash
+# Clear all cache
+nexa cache clear
+# Output: ✅ Cache cleared successfully.
+
+# View cache statistics
+nexa cache stats
+
+# List cache entries
+nexa cache list
+```
+
+!!! tip "Cache Information"
+    Nexa's intelligent cache system stores LLM responses in the `.nexa_cache/` directory:
+    - **LLM Cache**: Stored in `.nexa_cache/llm_cache.json`
+    - **Semantic Cache**: Intelligent matching based on input similarity
+    - **TTL Support**: Configurable cache expiration time
+    
+    Use `nexa cache clear` to clean the cache directory and free disk space.
+
+---
+
+### 2.4 `nexa doctor` - Environment Diagnosis
 
 Check runtime environment and dependencies.
 

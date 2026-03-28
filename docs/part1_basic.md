@@ -41,7 +41,8 @@ agent FriendlyBot {
 | `fallback` | string/list | 否 | - | 备用模型配置 |
 | `tools` | list | 否 | [] | 可用工具列表 |
 | `max_tokens` | int | 否 | - | 最大输出 token 数 |
-| `timeout` | int | 否 | 30 | 请求超时时间（秒） |
+| `timeout` | int | 否 | 30 | 执行超时时间（秒） |
+| `retry` | int | 否 | 3 | 失败重试次数 |
 
 ### 属性详细说明
 
@@ -227,7 +228,77 @@ agent HighAvailabilityBot {
 
 ---
 
-## 🌊 控制流枢纽：`flow` 和 `.run()`
+## 🎯 Agent 修饰器（Decorators）
+
+v1.0 引入了 Agent 修饰器语法，允许在 Agent 定义前添加元数据配置。
+
+### 可用修饰器
+
+| 修饰器 | 参数 | 说明 |
+|-------|------|------|
+| `@limit` | `max_tokens` | 限制最大输出 token 数 |
+| `@timeout` | `seconds` | 设置执行超时时间 |
+| `@retry` | `count` | 设置失败重试次数 |
+| `@temperature` | `value` | 设置模型温度参数 |
+
+### 使用示例
+
+```nexa
+// 限制输出长度
+@limit(max_tokens=500)
+agent ConciseBot {
+    prompt: "用简洁的语言回答问题",
+    model: "deepseek/deepseek-chat"
+}
+
+// 设置超时和重试
+@timeout(seconds=60)
+@retry(count=5)
+agent ResilientBot {
+    prompt: "处理可能耗时的任务",
+    model: "openai/gpt-4"
+}
+
+// 组合多个修饰器
+@limit(max_tokens=1000)
+@timeout(seconds=120)
+@retry(count=3)
+@temperature(value=0.7)
+agent ProductionBot {
+    role: "生产环境智能助手",
+    prompt: "提供高质量的专业回答",
+    model: "anthropic/claude-3-sonnet"
+}
+```
+
+### 修饰器与属性等价关系
+
+修饰器语法与 Agent 属性是等价的：
+
+```nexa
+// 使用修饰器
+@timeout(seconds=60)
+@retry(count=3)
+agent Bot1 {
+    prompt: "..."
+}
+
+// 等价于使用属性
+agent Bot1 {
+    prompt: "...",
+    timeout: 60,
+    retry: 3
+}
+```
+
+!!! tip "选择建议"
+    - **使用修饰器**：当需要突出运行时配置（如超时、重试）时
+    - **使用属性**：当配置较多且需要统一管理时
+    - 两种方式可以混用，修饰器优先级更高
+
+---
+
+## � 控制流枢纽：`flow` 和 `.run()`
 
 只定义 Agent 就像是为不同的部门招募到了世界顶级的员工，但不给他们分配办公桌和网络，他们就永远是沉睡的状态。我们需要一个载体来激活与编排他们。这一切都在 `flow` 中发生。
 

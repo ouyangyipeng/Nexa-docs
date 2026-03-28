@@ -119,10 +119,17 @@ enum NexaOpcode {
     AgentRun { agent_id: u32 },
     AgentClone { agent_id: u32 },
     
-    // Flow control
-    Pipeline { stages: Vec<u32> },
-    Fork { agents: Vec<u32> },
-    Merge { strategy: MergeStrategy },
+    // Flow control - DAG operators
+    Pipeline { stages: Vec<u32> },      // >> pipeline
+    Fork { agents: Vec<u32> },          // |>> fan-out (parallel wait)
+    Merge { strategy: MergeStrategy },  // &>> merge/fan-in
+    FireForget { agents: Vec<u32> },    // || fire-and-forget (v0.9.7+)
+    Consensus { agents: Vec<u32> },     // && consensus voting (v0.9.7+)
+    ConditionalBranch {
+        condition: ConditionType,
+        true_branch: u32,
+        false_branch: u32
+    },                                   // ?? conditional branch
     
     // Memory operations
     MemStore { key: StringId, scope: MemoryScope },
@@ -139,6 +146,11 @@ enum NexaOpcode {
     // LLM calls
     LLMCall { model: StringId },
     LLMStream { model: StringId },
+    
+    // New primitives (v0.9.7+)
+    Reason { context: StringId },       // Type-aware reasoning
+    WaitForHuman { prompt: StringId },  // Human approval wait
+    Break,                              // Loop break
 }
 ```
 

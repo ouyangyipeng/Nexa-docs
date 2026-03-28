@@ -18,13 +18,19 @@ comments: true
 
 | 命名空间 | 说明 | 主要工具 |
 |---------|------|---------|
-| `std.fs` | 文件系统操作 | `read`, `write`, `list`, `delete` |
-| `std.http` | HTTP 网络请求 | `get`, `post`, `put`, `delete` |
-| `std.time` | 时间相关操作 | `now`, `sleep`, `format` |
-| `std.shell` | 系统终端命令 | `execute` |
-| `std.ask_human` | 人机交互 | `call` |
-| `std.json` | JSON 处理 | `parse`, `stringify` |
-| `std.math` | 数学运算 | `calculate`, `random` |
+| `std.fs` | 文件系统操作 | `file_read`, `file_write`, `file_append`, `file_exists`, `file_list`, `file_delete` |
+| `std.http` | HTTP 网络请求 | `http_get`, `http_post`, `http_put`, `http_delete` |
+| `std.time` | 时间日期操作 | `time_now`, `time_format`, `time_diff`, `time_sleep`, `time_timestamp` |
+| `std.json` | JSON 数据处理 | `json_parse`, `json_get`, `json_stringify` |
+| `std.text` | 文本处理 | `text_split`, `text_replace`, `text_upper`, `text_lower` |
+| `std.hash` | 加密与编码 | `hash_md5`, `hash_sha256`, `base64_encode`, `base64_decode` |
+| `std.math` | 数学运算 | `math_calc`, `math_random` |
+| `std.regex` | 正则表达式 | `regex_match`, `regex_replace` |
+| `std.shell` | Shell 命令 | `shell_exec`, `shell_which` |
+| `std.ask_human` | 人机交互 | `ask_human` |
+
+!!! tip "命名空间工具调用"
+    所有标准库工具通过命名空间前缀调用，如 `std.fs.file_read(path)`。详细参数和用法请参考 [标准库参考手册](stdlib_reference.md)。
 
 ---
 

@@ -119,10 +119,17 @@ enum NexaOpcode {
     AgentRun { agent_id: u32 },
     AgentClone { agent_id: u32 },
     
-    // 流程控制
-    Pipeline { stages: Vec<u32> },
-    Fork { agents: Vec<u32> },
-    Merge { strategy: MergeStrategy },
+    // 流程控制 - DAG 操作符
+    Pipeline { stages: Vec<u32> },      // >> 管道
+    Fork { agents: Vec<u32> },          // |>> 分叉（并行等待）
+    Merge { strategy: MergeStrategy },  // &>> 合流
+    FireForget { agents: Vec<u32> },    // || 发射后不管（v0.9.7+）
+    Consensus { agents: Vec<u32> },     // && 共识投票（v0.9.7+）
+    ConditionalBranch {
+        condition: ConditionType,
+        true_branch: u32,
+        false_branch: u32
+    },                                   // ?? 条件分支
     
     // 记忆操作
     MemStore { key: StringId, scope: MemoryScope },
@@ -139,6 +146,11 @@ enum NexaOpcode {
     // LLM 调用
     LLMCall { model: StringId },
     LLMStream { model: StringId },
+    
+    // 新增原语（v0.9.7+）
+    Reason { context: StringId },       // 类型感知推理
+    WaitForHuman { prompt: StringId },  // 人工审批等待
+    Break,                              // 循环中断
 }
 ```
 
