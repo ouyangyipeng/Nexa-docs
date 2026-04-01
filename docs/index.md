@@ -21,19 +21,18 @@ comments: true
 
 Nexa 将复杂的多智能体协作简化为优雅的声明式语法。点击下方按钮体验 Nexa 与传统方案的差异：
 
----
+<div class="code-comparison">
 
+<div class="code-example">
 <span class="example-badge">示例 1</span>
 <span class="example-title">Agent 定义与调用</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-1">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 传统 Python + LangChain</span>
-      <span class="code-lines">12 行代码</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-1-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 传统 Python + LangChain</span>
+    <span class="code-lines">12 行代码</span>
+  </div>
+  <div class="card-content">
 ```python
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
@@ -51,14 +50,15 @@ chain = prompt | llm | StrOutputParser()
 result = chain.invoke({"input": "Hello, World!"})
 print(result)
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">4 行代码</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-1-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">4 行代码</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent Translator {
     role: "英中翻译助手",
@@ -67,12 +67,28 @@ agent Translator {
 
 result = Translator.run("Hello, World!")
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-1').classList.toggle('flipped')">
-  🔄 点击对比 Nexa 写法
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-1-traditional');
+    var nexa = document.getElementById('card-1-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 点击对比 Nexa 写法';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 返回查看传统写法';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 点击对比 Nexa 写法</button>
+</div>
+
 <div class="comparison-note">
 <strong>核心优势：</strong>从 12 行代码缩减到 4 行，无需理解 Chain、PromptTemplate、StrOutputParser 等复杂概念。Agent 定义即配置，调用即执行。<span class="reduction-badge">缩减 67%</span>
 </div>
@@ -80,17 +96,16 @@ result = Translator.run("Hello, World!")
 
 ---
 
+<div class="code-example">
 <span class="example-badge">示例 2</span>
 <span class="example-title">管道流程编排</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-2">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 传统 Python + LangChain</span>
-      <span class="code-lines">18 行代码</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-2-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 传统 Python + LangChain</span>
+    <span class="code-lines">18 行代码</span>
+  </div>
+  <div class="card-content">
 ```python
 import asyncio
 from langchain.chat_models import ChatOpenAI
@@ -114,14 +129,15 @@ async def pipeline(topic: str):
 
 result = asyncio.run(pipeline("人工智能"))
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">5 行代码</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-2-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">5 行代码</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent Writer { role: "作家", prompt: "撰写文章" }
 agent Reviewer { role: "审核员", prompt: "审核文章" }
@@ -131,12 +147,28 @@ flow main {
     result = "人工智能" >> Writer >> Reviewer >> Editor;
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-2').classList.toggle('flipped')">
-  🔄 点击对比 Nexa 写法
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-2-traditional');
+    var nexa = document.getElementById('card-2-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 点击对比 Nexa 写法';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 返回查看传统写法';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 点击对比 Nexa 写法</button>
+</div>
+
 <div class="comparison-note">
 <strong>核心优势：</strong>管道操作符 <code>>></code> 让数据流一目了然，无需手动传递中间变量、处理异步上下文。编译器自动优化执行顺序。<span class="reduction-badge">缩减 72%</span>
 </div>
@@ -144,17 +176,16 @@ flow main {
 
 ---
 
+<div class="code-example">
 <span class="example-badge">示例 3</span>
 <span class="example-title">意图路由分发</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-3">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 传统 Python + re</span>
-      <span class="code-lines">17 行代码</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-3-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 传统 Python + re</span>
+    <span class="code-lines">17 行代码</span>
+  </div>
+  <div class="card-content">
 ```python
 import re
 from langchain.chat_models import ChatOpenAI
@@ -177,14 +208,15 @@ def route_request(user_input: str):
 
 result = route_request("今天北京天气怎么样？")
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">10 行代码</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-3-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">10 行代码</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent WeatherBot { role: "天气助手" }
 agent NewsBot { role: "新闻助手" }
@@ -200,12 +232,28 @@ flow main {
     };
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-3').classList.toggle('flipped')">
-  🔄 点击对比 Nexa 写法
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-3-traditional');
+    var nexa = document.getElementById('card-3-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 点击对比 Nexa 写法';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 返回查看传统写法';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 点击对比 Nexa 写法</button>
+</div>
+
 <div class="comparison-note">
 <strong>核心优势：</strong><code>intent()</code> 语义匹配替代脆弱的正则表达式，使用嵌入向量进行语义相似度匹配，更智能、更灵活。<span class="reduction-badge">缩减 41%</span>
 </div>
@@ -213,17 +261,16 @@ flow main {
 
 ---
 
+<div class="code-example">
 <span class="example-badge">示例 4</span>
 <span class="example-title">并发 DAG 执行</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-4">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 传统 Python + asyncio</span>
-      <span class="code-lines">23 行代码</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-4-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 传统 Python + asyncio</span>
+    <span class="code-lines">23 行代码</span>
+  </div>
+  <div class="card-content">
 ```python
 import asyncio
 from langchain.chat_models import ChatOpenAI
@@ -252,14 +299,15 @@ async def parallel_research(topic: str):
 
 result = asyncio.run(parallel_research("AI 行业前景"))
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">6 行代码</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-4-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">6 行代码</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent TechResearcher { role: "技术研究员" }
 agent MarketResearcher { role: "市场研究员" }
@@ -272,18 +320,34 @@ flow main {
         &>> Summarizer;
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-4').classList.toggle('flipped')">
-  🔄 点击对比 Nexa 写法
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-4-traditional');
+    var nexa = document.getElementById('card-4-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 点击对比 Nexa 写法';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 返回查看传统写法';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 点击对比 Nexa 写法</button>
+</div>
+
 <div class="comparison-note">
 <strong>核心优势：</strong>DAG 操作符 <code>|>></code> (分叉) 和 <code>&>></code> (合流) 一行代码实现并发编排，无需理解 asyncio、gather、协程等概念。<span class="reduction-badge">缩减 74%</span>
 </div>
 </div>
 
----
+</div>
 
 ### 📊 代码量对比总结
 

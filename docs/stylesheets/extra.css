@@ -1088,56 +1088,60 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
 }
 
 /* ============================================
-   代码对比展示组件样式 - 翻页动画版
+   代码对比展示组件样式 - 切换动画版
    ============================================ */
 
-/* 对比容器 - 全宽布局 */
+/* 对比容器 */
 .code-comparison {
-  margin: 2rem 0;
-  perspective: 2000px;
+  margin: 2.5rem 0;
+  padding: 0.5rem 0;
 }
 
-/* 单个翻页卡片容器 */
-.flip-card {
-  width: 100%;
-  min-height: 320px;
+/* 示例区块容器 */
+.code-example {
+  margin: 3rem 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.code-example:last-of-type {
+  border-bottom: none;
+}
+
+/* 示例编号标签 */
+.example-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: white;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 示例标题 */
+.example-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* 切换卡片容器 */
+.code-toggle-card {
   position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 1.5rem;
-}
-
-.flip-card.flipped {
-  transform: rotateY(180deg);
-}
-
-/* 卡片正反面 */
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  min-height: 320px;
-  backface-visibility: hidden;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* 正面 - 传统代码 */
-.flip-card-front {
-  background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
-  border: 1px solid #dee2e6;
-}
-
-/* 反面 - Nexa 代码 */
-.flip-card-back {
-  transform: rotateY(180deg);
-  background: linear-gradient(160deg, #faf5ff 0%, #f3e8ff 100%);
-  border: 2px solid #c084fc;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 /* 卡片头部 */
-.flip-card .card-header {
+.code-toggle-card .card-header {
   padding: 1rem 1.5rem;
   font-weight: 600;
   font-size: 1rem;
@@ -1146,17 +1150,38 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
   justify-content: space-between;
 }
 
-.flip-card-front .card-header {
+/* 传统代码卡片 */
+.code-toggle-card.traditional {
+  background: linear-gradient(160deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+}
+
+.code-toggle-card.traditional .card-header {
   background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
   color: #fff;
 }
 
-.flip-card-back .card-header {
+/* Nexa 代码卡片 */
+.code-toggle-card.nexa {
+  background: linear-gradient(160deg, #faf5ff 0%, #f3e8ff 100%);
+  border: 2px solid #c084fc;
+  display: none;
+}
+
+.code-toggle-card.nexa.active {
+  display: block;
+}
+
+.code-toggle-card.traditional.hidden {
+  display: none;
+}
+
+.code-toggle-card.nexa .card-header {
   background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: #fff;
 }
 
-/* 标题图标和文字 */
+/* 标题文字 */
 .card-title {
   display: flex;
   align-items: center;
@@ -1175,49 +1200,64 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
 }
 
 /* 代码内容区域 */
-.flip-card .card-content {
+.code-toggle-card .card-content {
   padding: 1.25rem 1.5rem;
   overflow-x: auto;
 }
 
-.flip-card .card-content pre {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  font-size: 0.85rem;
+.code-toggle-card .card-content pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  font-size: 0.85rem !important;
 }
 
-.flip-card .card-content code {
+.code-toggle-card .card-content code {
   font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
-  font-size: 0.82rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.65;
 }
 
-/* 翻页按钮 */
-.flip-button {
+/* 切换按钮容器 */
+.toggle-button-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* 切换按钮 */
+.code-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  margin: 1rem 0;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
   background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: white;
   border: none;
-  border-radius: 2rem;
-  font-size: 0.9rem;
+  border-radius: 3rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+  font-family: inherit;
 }
 
-.flip-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+.code-toggle-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.45);
 }
 
-.flip-button:active {
-  transform: translateY(0);
+.code-toggle-btn:active {
+  transform: translateY(-1px);
+}
+
+.code-toggle-btn.showing-nexa {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+}
+
+.code-toggle-btn.showing-nexa:hover {
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
 }
 
 /* 对比说明 */
@@ -1226,8 +1266,8 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(168, 85, 247, 0.12) 100%);
   border-radius: 0.75rem;
   border-left: 4px solid #7c3aed;
-  margin-top: 0.5rem;
   font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .comparison-note strong {
@@ -1240,47 +1280,23 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.3rem 0.8rem;
-  margin-left: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  margin-left: 0.75rem;
   background: linear-gradient(135deg, #10b981, #059669);
   color: white;
-  border-radius: 1rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-/* 示例编号标签 */
-.example-badge {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  color: white;
-  border-radius: 2rem;
+  border-radius: 1.25rem;
   font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* 示例标题 */
-.example-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--md-primary-fg-color);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  vertical-align: middle;
 }
 
 /* 深色主题适配 */
-[data-md-color-scheme='slate'] .flip-card-front {
+[data-md-color-scheme='slate'] .code-toggle-card.traditional {
   background: linear-gradient(160deg, #2d3748 0%, #1a202c 100%);
   border-color: #4a5568;
 }
 
-[data-md-color-scheme='slate'] .flip-card-back {
+[data-md-color-scheme='slate'] .code-toggle-card.nexa {
   background: linear-gradient(160deg, #2e1065 0%, #1e1b4b 100%);
   border-color: #a855f7;
 }
@@ -1291,20 +1307,47 @@ body.yat-page--series .md-content__inner .md-typeset > h2::before {
 
 /* 响应式布局 */
 @media (max-width: 60rem) {
-  .flip-card {
-    min-height: 280px;
-  }
-  
-  .flip-card-front,
-  .flip-card-back {
-    min-height: 280px;
-  }
-  
-  .flip-card .card-content {
+  .code-toggle-card .card-content {
     padding: 1rem;
   }
   
-  .flip-card .card-content code {
-    font-size: 0.75rem;
+  .code-toggle-card .card-content code {
+    font-size: 0.78rem;
   }
+  
+  .code-toggle-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 代码统计表格 */
+.code-stats-table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.code-stats-table th,
+.code-stats-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+.code-stats-table th {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(168, 85, 247, 0.15));
+  font-weight: 600;
+  color: #7c3aed;
+}
+
+.code-stats-table tr:hover {
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.code-stats-table td:nth-child(2),
+.code-stats-table td:nth-child(3) {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
 }

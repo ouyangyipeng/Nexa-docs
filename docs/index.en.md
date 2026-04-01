@@ -21,19 +21,18 @@ comments: true
 
 Nexa simplifies complex multi-agent collaboration into elegant declarative syntax. Click the button below to experience the difference between Nexa and traditional approaches:
 
----
+<div class="code-comparison">
 
+<div class="code-example">
 <span class="example-badge">Example 1</span>
 <span class="example-title">Agent Definition & Invocation</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-1">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 Traditional Python + LangChain</span>
-      <span class="code-lines">12 lines</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-1-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 Traditional Python + LangChain</span>
+    <span class="code-lines">12 lines</span>
+  </div>
+  <div class="card-content">
 ```python
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
@@ -51,14 +50,15 @@ chain = prompt | llm | StrOutputParser()
 result = chain.invoke({"input": "Hello, World!"})
 print(result)
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">4 lines</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-1-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">4 lines</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent Translator {
     role: "English-Chinese Translator",
@@ -67,12 +67,28 @@ agent Translator {
 
 result = Translator.run("Hello, World!")
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-1').classList.toggle('flipped')">
-  🔄 Click to compare with Nexa
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-1-traditional');
+    var nexa = document.getElementById('card-1-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 Click to compare with Nexa';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 Back to traditional code';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 Click to compare with Nexa</button>
+</div>
+
 <div class="comparison-note">
 <strong>Key Advantage:</strong> From 12 lines down to 4, no need to understand Chain, PromptTemplate, StrOutputParser and other complex concepts. Agent definition is configuration, invocation is execution.<span class="reduction-badge">67% reduction</span>
 </div>
@@ -80,17 +96,16 @@ result = Translator.run("Hello, World!")
 
 ---
 
+<div class="code-example">
 <span class="example-badge">Example 2</span>
 <span class="example-title">Pipeline Orchestration</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-2">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 Traditional Python + LangChain</span>
-      <span class="code-lines">18 lines</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-2-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 Traditional Python + LangChain</span>
+    <span class="code-lines">18 lines</span>
+  </div>
+  <div class="card-content">
 ```python
 import asyncio
 from langchain.chat_models import ChatOpenAI
@@ -114,14 +129,15 @@ async def pipeline(topic: str):
 
 result = asyncio.run(pipeline("Artificial Intelligence"))
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">5 lines</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-2-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">5 lines</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent Writer { role: "Writer", prompt: "Write articles" }
 agent Reviewer { role: "Reviewer", prompt: "Review articles" }
@@ -131,12 +147,28 @@ flow main {
     result = "Artificial Intelligence" >> Writer >> Reviewer >> Editor;
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-2').classList.toggle('flipped')">
-  🔄 Click to compare with Nexa
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-2-traditional');
+    var nexa = document.getElementById('card-2-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 Click to compare with Nexa';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 Back to traditional code';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 Click to compare with Nexa</button>
+</div>
+
 <div class="comparison-note">
 <strong>Key Advantage:</strong> Pipeline operator <code>>></code> makes data flow crystal clear, no need to manually pass intermediate variables or handle async context. The compiler automatically optimizes execution order.<span class="reduction-badge">72% reduction</span>
 </div>
@@ -144,17 +176,16 @@ flow main {
 
 ---
 
+<div class="code-example">
 <span class="example-badge">Example 3</span>
 <span class="example-title">Intent Routing</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-3">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 Traditional Python + re</span>
-      <span class="code-lines">17 lines</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-3-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 Traditional Python + re</span>
+    <span class="code-lines">17 lines</span>
+  </div>
+  <div class="card-content">
 ```python
 import re
 from langchain.chat_models import ChatOpenAI
@@ -177,14 +208,15 @@ def route_request(user_input: str):
 
 result = route_request("What's the weather like in Beijing?")
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">10 lines</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-3-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">10 lines</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent WeatherBot { role: "Weather Assistant" }
 agent NewsBot { role: "News Assistant" }
@@ -200,12 +232,28 @@ flow main {
     };
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-3').classList.toggle('flipped')">
-  🔄 Click to compare with Nexa
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-3-traditional');
+    var nexa = document.getElementById('card-3-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 Click to compare with Nexa';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 Back to traditional code';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 Click to compare with Nexa</button>
+</div>
+
 <div class="comparison-note">
 <strong>Key Advantage:</strong> <code>intent()</code> semantic matching replaces fragile regex expressions, using embedding vectors for semantic similarity matching - smarter and more flexible.<span class="reduction-badge">41% reduction</span>
 </div>
@@ -213,17 +261,16 @@ flow main {
 
 ---
 
+<div class="code-example">
 <span class="example-badge">Example 4</span>
 <span class="example-title">Concurrent DAG Execution</span>
 
-<div class="code-comparison">
-<div class="flip-card" id="flip-4">
-  <div class="flip-card-front">
-    <div class="card-header">
-      <span class="card-title">🐍 Traditional Python + asyncio</span>
-      <span class="code-lines">23 lines</span>
-    </div>
-    <div class="card-content">
+<div class="code-toggle-card traditional" id="card-4-traditional">
+  <div class="card-header">
+    <span class="card-title">🐍 Traditional Python + asyncio</span>
+    <span class="code-lines">23 lines</span>
+  </div>
+  <div class="card-content">
 ```python
 import asyncio
 from langchain.chat_models import ChatOpenAI
@@ -252,14 +299,15 @@ async def parallel_research(topic: str):
 
 result = asyncio.run(parallel_research("AI Industry Outlook"))
 ```
-    </div>
   </div>
-  <div class="flip-card-back">
-    <div class="card-header">
-      <span class="card-title">✨ Nexa</span>
-      <span class="code-lines">6 lines</span>
-    </div>
-    <div class="card-content">
+</div>
+
+<div class="code-toggle-card nexa" id="card-4-nexa">
+  <div class="card-header">
+    <span class="card-title">✨ Nexa</span>
+    <span class="code-lines">6 lines</span>
+  </div>
+  <div class="card-content">
 ```nexa
 agent TechResearcher { role: "Tech Researcher" }
 agent MarketResearcher { role: "Market Researcher" }
@@ -272,18 +320,34 @@ flow main {
         &>> Summarizer;
 }
 ```
-    </div>
   </div>
 </div>
-<button class="flip-button" onclick="document.getElementById('flip-4').classList.toggle('flipped')">
-  🔄 Click to compare with Nexa
-</button>
+
+<div class="toggle-button-container">
+  <button class="code-toggle-btn" onclick="
+    var trad = document.getElementById('card-4-traditional');
+    var nexa = document.getElementById('card-4-nexa');
+    var btn = event.target;
+    if (nexa.classList.contains('active')) {
+      nexa.classList.remove('active');
+      trad.classList.remove('hidden');
+      btn.innerHTML = '🔄 Click to compare with Nexa';
+      btn.classList.remove('showing-nexa');
+    } else {
+      nexa.classList.add('active');
+      trad.classList.add('hidden');
+      btn.innerHTML = '🔙 Back to traditional code';
+      btn.classList.add('showing-nexa');
+    }
+  ">🔄 Click to compare with Nexa</button>
+</div>
+
 <div class="comparison-note">
 <strong>Key Advantage:</strong> DAG operators <code>|>></code> (fan-out) and <code>&>></code> (merge) implement concurrent orchestration in a single line, without needing to understand asyncio, gather, coroutines.<span class="reduction-badge">74% reduction</span>
 </div>
 </div>
 
----
+</div>
 
 ### 📊 Code Volume Comparison Summary
 
