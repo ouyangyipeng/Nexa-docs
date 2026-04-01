@@ -370,6 +370,218 @@ result = input >> Agent1 >> Agent2 >> Agent3;
 
 ---
 
+## 🔀 传统控制流 (v1.0.1+)
+
+除了 Nexa 特有的语义控制流（`match intent`、`loop until`、`semantic_if`），v1.0.1 引入了与传统编程语言一致的确定性控制流语句，让开发者能够更灵活地处理逻辑分支。
+
+### if/else if/else 语句
+
+传统的确定性条件分支：
+
+```nexa
+// 确定性 if/else if/else 语句
+score = 85;
+
+if score >= 90 {
+    grade = "A";
+    print("优秀！");
+} else if score >= 80 {
+    grade = "B";
+    print("良好！");
+} else if score >= 70 {
+    grade = "C";
+    print("中等");
+} else if score >= 60 {
+    grade = "D";
+    print("及格");
+} else {
+    grade = "F";
+    print("需要改进");
+}
+```
+
+!!! tip "与语义控制流的区别"
+    - **传统 if/else**: 基于确定性的布尔表达式，适合数值比较、状态检查
+    - **semantic_if**: 基于自然语言语义判断，需要 LLM 推理
+    - 选择原则：能用确定性条件就用传统 if，语义判断才用 semantic_if
+
+### for each 循环
+
+遍历数组或集合：
+
+```nexa
+// 遍历数组
+items = ["苹果", "香蕉", "樱桃", "橙子"];
+
+for item in items {
+    print("水果: " + item);
+}
+
+// 带索引的遍历（结合计数器）
+index = 0;
+for item in items {
+    print(f"第 {index + 1} 个: {item}");
+    index = index + 1;
+}
+```
+
+### while 循环
+
+基于条件的循环：
+
+```nexa
+// while 循环示例
+count = 0;
+
+while count < 5 {
+    print(f"计数: {count}");
+    count = count + 1;
+}
+```
+
+### break 和 continue
+
+循环控制语句：
+
+```nexa
+// break - 终止循环
+items = ["a", "b", "stop", "c", "d"];
+
+for item in items {
+    if item == "stop" {
+        print("找到停止点，退出循环");
+        break;
+    }
+    print("处理: " + item);
+}
+
+// continue - 跳过当前迭代
+for item in items {
+    if item == "stop" {
+        continue;  // 跳过这个元素
+    }
+    print("处理: " + item);
+}
+```
+
+---
+
+## 🔢 二元运算符与比较运算符 (v1.0.1+)
+
+### 算术运算符
+
+```nexa
+// 算术运算
+a = 10;
+b = 3;
+
+sum = a + b;      // 加法: 13
+diff = a - b;     // 减法: 7
+product = a * b;  // 乘法: 30
+quotient = a / b; // 除法: 3.33...
+remainder = a % b; // 取模: 1
+```
+
+### 比较运算符
+
+```nexa
+// 比较运算（返回布尔值）
+a = 10;
+b = 5;
+
+equal = a == b;       // 等于: false
+not_equal = a != b;   // 不等于: true
+greater = a > b;      // 大于: true
+less = a < b;         // 小于: false
+greater_eq = a >= b;  // 大于等于: true
+less_eq = a <= b;     // 小于等于: false
+```
+
+### 逻辑运算符
+
+```nexa
+// 逻辑运算
+a = true;
+b = false;
+
+result_and = a and b;  // 逻辑与: false
+result_or = a or b;    // 逻辑或: true
+```
+
+---
+
+## 🐍 Python 逃生舱 (v1.0.1+)
+
+当需要使用 Python 特有的库或功能时，可以使用 Python 逃生舱直接嵌入 Python 代码：
+
+### 基本语法
+
+```nexa
+// Python 逃生舱 - 直接嵌入 Python 代码
+python! """
+import numpy as np
+import pandas as pd
+
+# 创建数据
+data = np.array([1, 2, 3, 4, 5])
+mean_value = data.mean()
+std_value = data.std()
+
+print(f"均值: {mean_value}")
+print(f"标准差: {std_value}")
+"""
+```
+
+### 使用场景
+
+1. **科学计算**：使用 NumPy、SciPy 等库
+2. **数据处理**：使用 Pandas 进行数据分析
+3. **可视化**：使用 Matplotlib 绘图
+4. **系统集成**：调用系统 API 或第三方库
+
+### 完整示例
+
+```nexa
+agent DataAnalyzer {
+    role: "数据分析助手",
+    model: "deepseek/deepseek-chat",
+    prompt: "分析数据并给出洞察"
+}
+
+flow main {
+    // 使用 Python 进行数据预处理
+    python! """
+import json
+
+# 模拟数据
+data = [
+    {"name": "Alice", "score": 85},
+    {"name": "Bob", "score": 92},
+    {"name": "Charlie", "score": 78}
+]
+
+# 计算统计信息
+scores = [d["score"] for d in data]
+avg_score = sum(scores) / len(scores)
+max_score = max(scores)
+
+print(f"平均分: {avg_score}")
+print(f"最高分: {max_score}")
+"""
+    
+    // 然后让 Agent 分析结果
+    result = DataAnalyzer.run("分析学生成绩分布");
+    print(result);
+}
+```
+
+!!! warning "安全提示"
+    - Python 逃生舱中的代码会直接执行，请确保代码安全
+    - 建议仅在受信任的环境中使用
+    - 避免在逃生舱中处理敏感数据
+
+---
+
 ## 🔍 内置工具的挂载与环境沙盒穿透 (`uses` 关键字)
 
 如果仅仅是在控制台里产生字符串，大模型也不过是个会"聊天"的花瓶。真正的大模型智能体（Agent）要能与数字世界互动（比如查天气、删文件、写表格）。

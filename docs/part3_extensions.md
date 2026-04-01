@@ -468,6 +468,138 @@ protocol SimpleAndClear {
 
 ---
 
+## 🎯 Semantic Types 语义类型 (v1.0.2+)
+
+Nexa v1.0.2-beta 引入语义类型（Semantic Types），这是一种革命性的类型系统，允许在类型定义中嵌入语义约束，让类型不仅仅是数据格式的约束，还包含语义含义的验证。
+
+### 基本语法
+
+```nexa
+// 定义语义类型：基础类型 + 语义约束
+type Email = string @ "valid email address format"
+type PositiveInt = int @ "must be greater than 0"
+type URL = string @ "valid URL format starting with http:// or https://"
+```
+
+### 语义类型优势
+
+| 优势 | 说明 |
+|-----|------|
+| **语义验证** | 不仅验证数据格式，还验证语义正确性 |
+| **LLM 理解** | 约束声明使用自然语言，LLM 能更好理解 |
+| **自动修正** | 违反约束时自动触发 LLM 修正 |
+| **代码简洁** | 无需手写复杂的验证逻辑 |
+
+### 使用示例
+
+```nexa
+// 定义语义类型
+type UserName = string @ "real person name, 2-50 characters"
+type Age = int @ "age between 1 and 150"
+type PhoneNumber = string @ "valid phone number format"
+
+// 在 Protocol 中使用语义类型
+protocol UserProfile {
+    name: UserName,
+    age: Age,
+    phone: PhoneNumber,
+    email: Email
+}
+
+agent UserExtractor implements UserProfile {
+    prompt: "从文本中提取用户信息"
+}
+
+flow main {
+    text = "张三，25岁，手机13812345678，邮箱zhangsan@example.com";
+    profile = UserExtractor.run(text);
+    
+    // profile 自动通过语义验证
+    print(profile.name);   // "张三"
+    print(profile.age);    // 25
+}
+```
+
+### 语义约束自动验证
+
+当 LLM 输出违反语义约束时，Nexa 会自动触发修正：
+
+```
+LLM 输出: {"email": "not-an-email"}
+    │
+    ▼
+语义验证器检测到 "not-an-email" 不符合 Email 约束
+    │
+    ▼
+生成修正提示: "email 字段必须是有效的电子邮件格式"
+    │
+    ▼
+自动重新请求 LLM
+    │
+    └──► 返回符合约束的结果
+```
+
+### 常用语义类型示例
+
+```nexa
+// 标识符类
+type UUID = string @ "valid UUID format"
+type ProductID = string @ "product identifier starting with 'PROD-'"
+
+// 数值类
+type Percentage = float @ "value between 0.0 and 100.0"
+type Temperature = float @ "temperature in Celsius, -273.15 to 1000"
+
+// 文本类
+type NonEmptyString = string @ "non-empty string"
+type ChineseText = string @ "text containing only Chinese characters"
+
+// 时间类
+type DateString = string @ "valid date in YYYY-MM-DD format"
+type TimeString = string @ "valid time in HH:MM format"
+
+// 网络类
+type IPAddress = string @ "valid IPv4 or IPv6 address"
+type DomainName = string @ "valid domain name format"
+```
+
+### 语义类型与 Protocol 组合
+
+```nexa
+// 定义严格的语义类型组合
+type OrderAmount = float @ "positive number with up to 2 decimal places"
+type SKU = string @ "stock keeping unit in format SKU-XXXX-XXXX"
+
+protocol OrderInfo {
+    order_id: UUID,
+    sku: SKU,
+    amount: OrderAmount,
+    created_at: DateString
+}
+
+agent OrderProcessor implements OrderInfo {
+    prompt: "处理订单信息，确保格式正确"
+}
+
+flow main {
+    raw_order = "订单号123e4567-e89b-12d3，商品SKU-1234-5678，金额99.99元";
+    order = OrderProcessor.run(raw_order);
+    
+    // 所有字段自动通过语义验证
+    print(order.order_id);  // UUID 格式
+    print(order.sku);       // SKU-XXXX-XXXX 格式
+    print(order.amount);    // 正数，两位小数
+}
+```
+
+!!! tip "最佳实践"
+    - 语义约束描述要**清晰具体**，避免模糊表述
+    - 使用**可验证的约束**，如"大于0"、"YYYY-MM-DD格式"
+    - 约束描述使用**LLM易懂的自然语言**
+    - 避免过度复杂的组合约束
+
+---
+
 ## 📝 本章小结
 
 在本章中，我们学习了：
@@ -478,8 +610,9 @@ protocol SimpleAndClear {
 | `implements` | Agent 实现协议 | 确保输出格式一致 |
 | 自动重试 | 验证失败自动修正 | 提高系统可靠性 |
 | Model Routing | 多模型路由 | 成本优化、高可用 |
+| Semantic Types | 语义类型约束 | 智能数据验证 |
 
-通过将 `protocol` 的刚性契约与动态 `fallback` 流转网络相结合，Nexa 在赋予高度"思考灵活性"的同时，从未抛弃几十年来传统软件工程所积累的"鲁棒性与边界确定性"基因。这也是 Agent 开发向正规化轨道迈出的决定性一步。
+通过将 `protocol` 的刚性契约与动态 `fallback` 流转网络相结合，再配合 v1.0.2 引入的语义类型系统，Nexa 在赋予高度"思考灵活性"的同时，从未抛弃几十年来传统软件工程所积累的"鲁棒性与边界确定性"基因。这也是 Agent 开发向正规化轨道迈出的决定性一步。
 
 ---
 

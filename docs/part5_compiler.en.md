@@ -268,6 +268,220 @@ Dynamically allocating concurrent resources based on system load at the AVM laye
 
 ---
 
+## 🐄 COW Memory: Copy-On-Write State Branching (v1.0.3+)
+
+Nexa v1.0.3-beta introduces COW (Copy-On-Write) memory mechanism, achieving O(1) complexity state branching, enabling efficient implementation of Tree-of-Thoughts and other advanced reasoning patterns.
+
+### Core Concept
+
+COW Memory allows creating state branches without copying the entire state:
+
+```
+Original State (S0)
+    │
+    ├── Branch S1 (only records differences, not full copy)
+    │   └── Branch S1' (continues recording differences)
+    │
+    └── Branch S2 (only records differences)
+        └── Branch S2' (continues recording differences)
+```
+
+### Working Principle
+
+```rust
+// COW Memory structure (simplified)
+struct CowMemory {
+    base_state: Arc<State>,          // Shared base state
+    delta_changes: Vec<ChangeRecord>, // Only incremental changes
+    parent_ref: Option<Arc<CowMemory>>, // Parent node reference
+}
+
+// Create branch: O(1) complexity
+fn branch_state(current: &CowMemory) -> CowMemory {
+    CowMemory {
+        base_state: current.base_state.clone(),  // Shared, not copied
+        delta_changes: Vec::new(),                // New delta list
+        parent_ref: Some(Arc::new(current.clone())),
+    }
+}
+```
+
+### Performance Advantages
+
+| Operation | Traditional Copy | COW Memory |
+|-----------|-----------------|------------|
+| Create Branch | O(n) | **O(1)** |
+| Merge State | O(n) | O(k) where k = changes |
+| Memory Usage | n × branches | n + k × branches |
+| Backtrack | O(n) | **O(1)** |
+
+### Use Cases
+
+#### Tree-of-Thoughts Exploration
+
+```nexa
+// Tree-of-Thoughts exploration example
+agent Thinker {
+    prompt: "Explore multiple solution approaches"
+    memory: "cow"  // Enable COW memory
+}
+
+flow explore_solutions {
+    problem = "How to optimize system performance?";
+    
+    // Create multiple thinking branches
+    branch1 = Thinker.run(problem) |>> {
+        "Approach A: Database optimization"
+    };
+    
+    branch2 = Thinker.run(problem) |>> {
+        "Approach B: Caching strategy"
+    };
+    
+    branch3 = Thinker.run(problem) |>> {
+        "Approach C: Architecture redesign"
+    };
+    
+    // Consensus to find best solution
+    best_solution = branch1 && branch2 && branch3;
+    print(best_solution);
+}
+```
+
+#### Multi-Path Reasoning
+
+```nexa
+// Multi-path reasoning example
+agent Reasoner {
+    prompt: "Analyze problems from multiple perspectives"
+    memory: "cow"
+}
+
+flow multi_path_reasoning {
+    question = "Is this design decision correct?";
+    
+    // Create reasoning branches
+    technical = Reasoner.run(question + " from technical perspective");
+    business = Reasoner.run(question + " from business perspective");
+    user = Reasoner.run(question + " from user experience perspective");
+    
+    // Combine decisions
+    decision = technical && business && user;
+    print(decision);
+}
+```
+
+---
+
+## 🔄 Work-Stealing Scheduler (v1.0.3+)
+
+v1.0.3-beta also introduces Work-Stealing scheduler, implementing efficient concurrent task scheduling based on Actor model.
+
+### Core Mechanism
+
+Work-Stealing scheduler allows idle Workers to "steal" tasks from busy Workers:
+
+```
+┌─────────────────────────────────────────────────┐
+│              Global Task Queue                   │
+└─────────────────────────────────────────────────┘
+         │                │                │
+         ▼                ▼                ▼
+    ┌─────────┐      ┌─────────┐      ┌─────────┐
+    │ Worker1 │      │ Worker2 │      │ Worker3 │
+    │ [busy]  │      │ [idle]  │      │ [busy]  │
+    └─────────┘      └─────────┘      └─────────┘
+         │                │
+         │   ← steal task │
+         └────────────────┘
+```
+
+### Scheduling Algorithm
+
+```rust
+// Work-Stealing scheduler core logic
+struct WorkStealingScheduler {
+    workers: Vec<Worker>,
+    global_queue: Arc<Mutex<Vec<Task>>>,
+}
+
+impl Worker {
+    fn run(&self) {
+        loop {
+            // 1. First get task from local queue
+            if let Some(task) = self.local_queue.pop() {
+                self.execute(task);
+                continue;
+            }
+            
+            // 2. Local empty, get from global queue
+            if let Some(task) = global_queue.lock().pop() {
+                self.local_queue.push(task);
+                continue;
+            }
+            
+            // 3. Global empty, steal from other workers
+            self.steal_from_others();
+        }
+    }
+    
+    fn steal_from_others(&self) {
+        for other in &other_workers {
+            if other.local_queue.len() > THRESHOLD {
+                // Steal half of tasks
+                let stolen = other.local_queue.steal_half();
+                self.local_queue.extend(stolen);
+                break;
+            }
+        }
+    }
+}
+```
+
+### Performance Advantages
+
+| Feature | Traditional Scheduler | Work-Stealing |
+|---------|----------------------|---------------|
+| Load Balancing | Requires explicit allocation | **Automatic balance** |
+| Idle Workers | Wait for tasks | **Proactively steal** |
+| Task Migration | Requires extra overhead | **Zero-cost migration** |
+| Concurrency | Limited by allocation strategy | **Maximize utilization** |
+
+### Usage Example
+
+```nexa
+// Concurrent task processing example
+@timeout(seconds=120)
+agent ParallelProcessor {
+    prompt: "Process multiple tasks concurrently"
+}
+
+flow parallel_workflow {
+    tasks = ["task1", "task2", "task3", "task4", "task5"];
+    
+    // Work-Stealing automatically schedules all tasks
+    results = tasks |>> ParallelProcessor;
+    
+    // Aggregate results
+    final = results &>> Aggregator;
+    print(final);
+}
+```
+
+### Configuration Options
+
+```nexa
+// Enable Work-Stealing in project config
+// nexa.config.toml
+[scheduler]
+type = "work_stealing"
+workers = 8           # Number of workers
+steal_threshold = 2   # Steal threshold
+balance_interval = 100  # Load balance check interval (ms)
+```
+
+---
+
 ## 📄 Vector Virtual Memory Paging
 
 AVM takes over memory and automatically performs vectorized swapping of conversation history.

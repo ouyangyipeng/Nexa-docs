@@ -411,6 +411,92 @@ AVM manages memory, automatically performing vectorized swapping of conversation
 
 ---
 
+## 🚀 v1.0.1 - v1.0.4 Continuous Evolution
+
+Since the v1.0-alpha release, Nexa has been rapidly iterating with powerful language features:
+
+### 🔀 v1.0.1-beta: Traditional Control Flow & Python Escape Hatch
+
+Providing more flexible programming capabilities for Agent development:
+
+| Feature | Description |
+|---------|-------------|
+| `if/else if/else` | Traditional conditional statements |
+| `for each` | Collection iteration loop |
+| `while` | Conditional loop |
+| `break/continue` | Loop control statements |
+| `python! """..."""` | Python code embedding escape hatch |
+
+```nexa
+// Traditional control flow example
+tasks = ["task1", "task2", "task3"];
+for each task in tasks {
+    if task == "critical" {
+        HighPriorityAgent.run(task);
+    } else {
+        NormalAgent.run(task);
+    }
+}
+
+// Python escape hatch example
+result = python! """
+    import statistics
+    data = json.loads(raw_data)
+    return statistics.mean(data)
+"""
+```
+
+### 🎯 v1.0.2-beta: Semantic Types
+
+Revolutionary type system that makes types carry semantic constraints:
+
+```nexa
+// Types are not just formats, but include semantic meaning
+type Email = string @ "valid email address format"
+type PositiveInt = int @ "must be greater than 0"
+
+protocol UserProfile {
+    name: UserName,
+    email: Email  // Automatically validates email format
+}
+```
+
+### 🐄 v1.0.3-beta: COW Memory & Work-Stealing
+
+Providing foundational support for advanced reasoning patterns:
+
+| Feature | Description |
+|---------|-------------|
+| **COW Memory** | O(1) state branching, enabling Tree-of-Thoughts |
+| **Work-Stealing Scheduler** | Efficient concurrent scheduling based on Actor model |
+
+```nexa
+// Tree-of-Thought exploration
+agent Thinker {
+    memory: "cow"  // Enable COW memory
+}
+
+// Multi-path reasoning
+branch1 = Thinker.run(problem) |>> "technical perspective";
+branch2 = Thinker.run(problem) |>> "business perspective";
+best = branch1 && branch2;  // Consensus merge
+```
+
+### 🐍 v1.0.4-beta: Python SDK COW Agent State
+
+Python SDK adds COW Agent state management, enabling cross-language state branching:
+
+```python
+# Using COW in Python SDK
+from nexa import CowAgent
+
+agent = CowAgent("analyzer")
+branch1 = agent.branch()  # O(1) branch creation
+branch2 = agent.branch()
+```
+
+---
+
 ## 🎯 More Core Features
 
 Beyond code simplicity, Nexa provides these powerful language-level features:

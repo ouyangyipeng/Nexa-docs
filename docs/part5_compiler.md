@@ -268,6 +268,218 @@ impl Default for WasmResourceLimits {
 
 ---
 
+## 🐄 COW Memory 写时复制内存 (v1.0.3+)
+
+Nexa v1.0.3-beta 引入 COW（Copy-On-Write）内存机制，实现 O(1) 复杂度的状态分支，为 Tree-of-Thoughts（思维树）等高级推理模式提供高效的内存支持。
+
+### 核心概念
+
+COW Memory 允许在不复制整个状态的情况下创建状态分支：
+
+```
+原始状态 (S0)
+    │
+    ├── 分支 S1 (只记录差异，不复制全部)
+    │   └── 分支 S1' (继续差异累积)
+    │
+    └── 分支 S2 (只记录差异)
+        └── 分支 S2' (继续差异累积)
+```
+
+### 工作原理
+
+```rust
+// COW 内存结构（简化示意）
+struct CowMemory {
+    base_state: Arc<StateSnapshot>,     // 共享的基础状态
+    delta_changes: Vec<ChangeRecord>,    // 仅记录增量变化
+    parent_ref: Option<Arc<CowMemory>>,  // 父节点引用
+}
+
+// 创建分支：O(1) 复杂度
+fn branch_state(current: &CowMemory) -> CowMemory {
+    CowMemory {
+        base_state: current.base_state.clone(),  // 共享，不复制
+        delta_changes: Vec::new(),               // 新的增量列表
+        parent_ref: Some(Arc::new(current.clone())),
+    }
+}
+```
+
+### 性能优势
+
+| 操作 | 传统复制 | COW 内存 |
+|------|---------|----------|
+| 创建分支 | O(n) | **O(1)** |
+| 合并状态 | O(n) | O(k) k=变化数 |
+| 内存占用 | n × 分支数 | n + k × 分支数 |
+| 回溯操作 | O(n) | O(1) |
+
+### 使用场景
+
+#### Tree-of-Thoughts 实现
+
+```nexa
+// 思维树探索示例
+agent Thinker {
+    prompt: "探索多种解决方案"
+    memory: "cow"  // 启用 COW 内存模式
+}
+
+flow explore_solutions {
+    problem = "如何优化系统性能？";
+    
+    // 创建多个思维分支
+    branch1 = Thinker.run(problem) |>> {
+        "方案A: 数据库优化"
+    }
+    
+    branch2 = Thinker.run(problem) |>> {
+        "方案B: 缓存策略"
+    }
+    
+    branch3 = Thinker.run(problem) |>> {
+        "方案C: 架构重构"
+    }
+    
+    // 共识合并
+    best_solution = branch1 && branch2 && branch3;
+    print(best_solution);
+}
+```
+
+#### 多路径推理
+
+```nexa
+// 多路径推理示例
+agent Reasoner {
+    prompt: "分析问题的不同角度"
+    memory: "cow"
+}
+
+flow multi_path_reasoning {
+    question = "这个设计决策是否合理？";
+    
+    // 创建推理分支
+    technical = Reasoner.run(question + "从技术角度");
+    business = Reasoner.run(question + "从商业角度");
+    user = Reasoner.run(question + "从用户体验角度");
+    
+    // 综合决策
+    decision = technical && business && user;
+    print(decision);
+}
+```
+
+---
+
+## 🔄 Work-Stealing Scheduler 工作窃取调度器 (v1.0.3+)
+
+v1.0.3-beta 同时引入 Work-Stealing 调度器，基于 Actor 模型实现高效的并发任务调度。
+
+### 核心机制
+
+Work-Stealing 调度器允许空闲的 Worker 从繁忙的 Worker 那里"窃取"任务：
+
+```
+┌─────────────────────────────────────────────────┐
+│              Global Task Queue                   │
+└─────────────────────────────────────────────────┘
+         │                │                │
+         ▼                ▼                ▼
+    ┌─────────┐      ┌─────────┐      ┌─────────┐
+    │ Worker1 │      │ Worker2 │      │ Worker3 │
+    │ [任务满] │      │ [空闲]  │      │ [任务中] │
+    └─────────┘      └─────────┘      └─────────┘
+         │                │
+         │   ← 窃取任务 → │
+         └────────────────┘
+```
+
+### 调度策略
+
+```rust
+// Work-Stealing 调度器核心逻辑
+struct WorkStealingScheduler {
+    workers: Vec<Worker>,
+    global_queue: Arc<Mutex<Vec<Task>>>,
+}
+
+impl Worker {
+    fn run(&self) {
+        loop {
+            // 1. 先从本地队列获取任务
+            if let Some(task) = self.local_queue.pop() {
+                self.execute(task);
+            }
+            // 2. 本地空了，从全局队列获取
+            else if let Some(task) = global_queue.lock().pop() {
+                self.local_queue.push(task);
+            }
+            // 3. 全局也空了，从其他 Worker 窃取
+            else {
+                self.steal_from_others();
+            }
+        }
+    }
+    
+    fn steal_from_others(&self) {
+        for other in &other_workers {
+            if other.local_queue.len() > THRESHOLD {
+                // 窃取一半任务
+                let stolen = other.local_queue.steal_half();
+                self.local_queue.extend(stolen);
+                break;
+            }
+        }
+    }
+}
+```
+
+### 性能优势
+
+| 特性 | 传统调度器 | Work-Stealing |
+|------|-----------|---------------|
+| 负载均衡 | 需要显式分配 | **自动均衡** |
+| 空闲 Worker | 等待任务 | **主动窃取** |
+| 任务迁移 | 需要额外开销 | **零成本迁移** |
+| 并发效率 | 受限于分配策略 | **最大化利用** |
+
+### 使用示例
+
+```nexa
+// 并发任务处理示例
+@timeout(seconds=120)
+agent ParallelProcessor {
+    prompt: "并行处理多个任务"
+}
+
+flow parallel_workflow {
+    tasks = ["task1", "task2", "task3", "task4", "task5"];
+    
+    // Work-Stealing 自动调度所有任务
+    results = tasks |>> ParallelProcessor;
+    
+    // 合并结果
+    final = results &>> Aggregator;
+    print(final);
+}
+```
+
+### 配置选项
+
+```nexa
+// 在项目配置中启用 Work-Stealing
+// nexa.config.toml
+[scheduler]
+type = "work_stealing"
+workers = 8          # Worker 数量
+steal_threshold = 2  # 窃取阈值
+balance_interval = 100ms  # 负载均衡检查间隔
+```
+
+---
+
 ## 📄 向量虚存分页
 
 AVM 接管内存，自动执行对话历史的向量化置换。

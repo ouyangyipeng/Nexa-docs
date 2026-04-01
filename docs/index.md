@@ -411,6 +411,92 @@ AVM 接管内存，自动执行对话历史的向量化置换：
 
 ---
 
+## 🚀 v1.0.1 - v1.0.4 持续进化
+
+自 v1.0-alpha 发布以来，Nexa 持续快速迭代，带来了更多强大的语言特性：
+
+### 🔀 v1.0.1-beta: 传统控制流 & Python 逃生舱
+
+为 Agent 开发提供更灵活的编程能力：
+
+| 特性 | 说明 |
+|-----|------|
+| `if/else if/else` | 传统条件分支语句 |
+| `for each` | 集合迭代循环 |
+| `while` | 条件循环语句 |
+| `break/continue` | 循环控制语句 |
+| `python! """..."""` | Python 代码嵌入逃生舱 |
+
+```nexa
+// 传统控制流示例
+tasks = ["task1", "task2", "task3"];
+for each task in tasks {
+    if task == "critical" {
+        HighPriorityAgent.run(task);
+    } else {
+        NormalAgent.run(task);
+    }
+}
+
+// Python 逃生舱示例
+stats = python! """
+    import statistics
+    data = json.loads(raw_data)
+    return statistics.mean(data)
+"""
+```
+
+### 🎯 v1.0.2-beta: Semantic Types 语义类型
+
+革命性的类型系统，让类型携带语义约束：
+
+```nexa
+// 类型不再只是格式约束，还包含语义含义
+type Email = string @ "valid email address format"
+type PositiveInt = int @ "must be greater than 0"
+
+protocol UserProfile {
+    name: UserName,
+    email: Email  // 自动验证邮箱格式
+}
+```
+
+### 🐄 v1.0.3-beta: COW Memory & Work-Stealing
+
+为高级推理模式提供底层支持：
+
+| 特性 | 说明 |
+|-----|------|
+| **COW Memory** | O(1) 状态分支，支持 Tree-of-Thoughts |
+| **Work-Stealing Scheduler** | 基于 Actor 模型的高效并发调度 |
+
+```nexa
+// Tree-of-Thoughts 探索
+agent Thinker {
+    memory: "cow"  // 启用 COW 内存
+}
+
+// 多路径推理
+branch1 = Thinker.run(problem) |>> "技术视角";
+branch2 = Thinker.run(problem) |>> "商业视角";
+best = branch1 && branch2;  // 共识合并
+```
+
+### 🐍 v1.0.4-beta: Python SDK COW Agent 状态
+
+Python SDK 支持 COW Agent 状态管理，实现跨语言的状态分支：
+
+```python
+# Python SDK 中使用 COW Agent
+from nexa import CowAgent
+
+agent = CowAgent("analyzer")
+branch1 = agent.branch()  # O(1) 创建分支
+branch2 = agent.branch()
+```
+
+---
+
 ## 🎯 更多核心特性
 
 除了代码简洁性，Nexa 还提供以下强大的语言级特性：

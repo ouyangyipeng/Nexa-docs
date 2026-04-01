@@ -468,6 +468,138 @@ protocol SimpleAndClear {
 
 ---
 
+## 🎯 Semantic Types (v1.0.2+)
+
+Nexa v1.0.2-beta introduces Semantic Types, a revolutionary type system that allows embedding semantic constraints within type definitions. Types are no longer just data format constraints, but also include semantic meaning validation.
+
+### Basic Syntax
+
+```nexa
+// Define semantic type: base type + semantic constraint
+type Email = string @ "valid email address format"
+type PositiveInt = int @ "must be greater than 0"
+type URL = string @ "valid URL format starting with http:// or https://"
+```
+
+### Semantic Type Advantages
+
+| Advantage | Description |
+|-----|------|
+| **Semantic Validation** | Not only validates data format, but also semantic correctness |
+| **LLM Understanding** | Constraint declarations use natural language, LLM can better understand |
+| **Auto Correction** | Automatically triggers LLM correction when constraints are violated |
+| **Clean Code** | No need to write complex validation logic |
+
+### Usage Example
+
+```nexa
+// Define semantic types
+type UserName = string @ "real person name, 2-50 characters"
+type Age = int @ "age between 1 and 150"
+type PhoneNumber = string @ "valid phone number format"
+
+// Use semantic types in Protocol
+protocol UserProfile {
+    name: UserName,
+    age: Age,
+    phone: PhoneNumber,
+    email: Email
+}
+
+agent UserExtractor implements UserProfile {
+    prompt: "Extract user information from text"
+}
+
+flow main {
+    text = "John Smith, 25 years old, phone 13812345678, email john@example.com";
+    profile = UserExtractor.run(text);
+    
+    // profile automatically passes semantic validation
+    print(profile.name);   // "John Smith"
+    print(profile.age);    // 25
+}
+```
+
+### Semantic Constraint Auto Validation
+
+When LLM output violates semantic constraints, Nexa automatically triggers correction:
+
+```
+LLM Output: {"email": "not-an-email"}
+    │
+    ▼
+Semantic Validator detects "not-an-email" doesn't match Email constraint
+    │
+    ▼
+Generate correction prompt: "email field must be valid email format"
+    │
+    ▼
+Automatically re-request LLM
+    │
+    └──► Return constraint-compliant result
+```
+
+### Common Semantic Type Examples
+
+```nexa
+// Identifier types
+type UUID = string @ "valid UUID format"
+type ProductID = string @ "product identifier starting with 'PROD-'"
+
+// Numeric types
+type Percentage = float @ "value between 0.0 and 100.0"
+type Temperature = float @ "temperature in Celsius, -273.15 to 1000"
+
+// Text types
+type NonEmptyString = string @ "non-empty string"
+type ChineseText = string @ "text containing only Chinese characters"
+
+// Time types
+type DateString = string @ "valid date in YYYY-MM-DD format"
+type TimeString = string @ "valid time in HH:MM format"
+
+// Network types
+type IPAddress = string @ "valid IPv4 or IPv6 address"
+type DomainName = string @ "valid domain name format"
+```
+
+### Semantic Types with Protocol Combination
+
+```nexa
+// Define strict semantic type combination
+type OrderAmount = float @ "positive number with up to 2 decimal places"
+type SKU = string @ "stock keeping unit in format SKU-XXXX-XXXX"
+
+protocol OrderInfo {
+    order_id: UUID,
+    sku: SKU,
+    amount: OrderAmount,
+    created_at: DateString
+}
+
+agent OrderProcessor implements OrderInfo {
+    prompt: "Process order information, ensure correct format"
+}
+
+flow main {
+    raw_order = "Order ID 123e4567-e89b-12d3, product SKU-1234-5678, amount 99.99";
+    order = OrderProcessor.run(raw_order);
+    
+    // All fields automatically pass semantic validation
+    print(order.order_id);  // UUID format
+    print(order.sku);       // SKU-XXXX-XXXX format
+    print(order.amount);    // Positive, 2 decimal places
+}
+```
+
+!!! tip "Best Practices"
+    - Semantic constraint descriptions should be **clear and specific**, avoid vague statements
+    - Use **verifiable constraints**, like "greater than 0", "YYYY-MM-DD format"
+    - Constraint descriptions use **natural language LLM can understand**
+    - Avoid overly complex combined constraints
+
+---
+
 ## 📝 Chapter Summary
 
 In this chapter, we learned:
@@ -478,8 +610,9 @@ In this chapter, we learned:
 | `implements` | Agent implements protocol | Ensure output format consistency |
 | Auto Retry | Validation failure auto-correction | Improve system reliability |
 | Model Routing | Multi-model routing | Cost optimization, high availability |
+| Semantic Types | Semantic type constraints | Intelligent data validation |
 
-By combining the rigid contracts of `protocol` with dynamic `fallback` flow networks, Nexa never abandons the "robustness and boundary determinism" genes accumulated over decades of traditional software engineering while granting high "thinking flexibility." This is also a decisive step for Agent development toward the track of formalization.
+By combining the rigid contracts of `protocol` with dynamic `fallback` flow networks, and the semantic type system introduced in v1.0.2, Nexa never abandons the "robustness and boundary determinism" genes accumulated over decades of traditional software engineering while granting high "thinking flexibility." This is also a decisive step for Agent development toward the track of formalization.
 
 ---
 

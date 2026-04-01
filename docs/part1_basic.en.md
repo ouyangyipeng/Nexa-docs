@@ -370,6 +370,230 @@ result = input >> Agent1 >> Agent2 >> Agent3;
 
 ---
 
+## 🔀 Traditional Control Flow (v1.0.1+)
+
+Nexa v1.0.1-beta introduces traditional control flow statements, providing more flexible programming capabilities.
+
+### if/else if/else Statements
+
+```nexa
+// Basic if statement
+if score >= 90 {
+    print("Excellent!");
+}
+
+// if/else statement
+if temperature > 30 {
+    print("It's hot today");
+} else {
+    print("The weather is comfortable");
+}
+
+// if/else if/else chain
+if user_level == "admin" {
+    grant_full_access();
+} else if user_level == "moderator" {
+    grant_partial_access();
+} else {
+    grant_basic_access();
+}
+```
+
+### for each Loop
+
+Iterates over each element in a collection:
+
+```nexa
+// Iterate over list
+tasks = ["task1", "task2", "task3"];
+for each task in tasks {
+    result = Agent.run(task);
+    print(result);
+}
+
+// Iterate over dictionary
+config = {"model": "gpt-4", "timeout": 60};
+for each key, value in config {
+    print(key + ": " + value);
+}
+```
+
+### while Loop
+
+Executes repeatedly while a condition is true:
+
+```nexa
+// Basic while loop
+count = 0;
+while count < 5 {
+    print("Current count: " + count);
+    count = count + 1;
+}
+
+// while loop with Agent call
+attempts = 0;
+max_attempts = 3;
+while attempts < max_attempts {
+    result = Agent.run("Try task");
+    if result == "success" {
+        break;  // Exit loop on success
+    }
+    attempts = attempts + 1;
+}
+```
+
+### break and continue
+
+Control loop execution flow:
+
+```nexa
+// break: Exit loop early
+for each item in items {
+    if item == "stop_signal" {
+        break;  // Stop iteration immediately
+    }
+    process(item);
+}
+
+// continue: Skip current iteration
+for each number in numbers {
+    if number == 0 {
+        continue;  // Skip zero values
+    }
+    calculate(number);
+}
+```
+
+---
+
+## 🔢 Binary and Comparison Operators (v1.0.1+)
+
+### Arithmetic Operators
+
+| Operator | Description | Example |
+|---------|-----|------|
+| `+` | Addition | `a + b` |
+| `-` | Subtraction | `a - b` |
+| `*` | Multiplication | `a * b` |
+| `/` | Division | `a / b` |
+| `%` | Modulo | `a % b` |
+
+```nexa
+// Arithmetic operations
+total = price * quantity + shipping_fee;
+average = sum / count;
+remainder = total % divisor;
+```
+
+### Comparison Operators
+
+| Operator | Description | Example |
+|---------|-----|------|
+| `==` | Equal | `a == b` |
+| `!=` | Not equal | `a != b` |
+| `<` | Less than | `a < b` |
+| `>` | Greater than | `a > b` |
+| `<=` | Less than or equal | `a <= b` |
+| `>=` | Greater than or equal | `a >= b` |
+
+```nexa
+// Comparison operations
+if score >= 60 {
+    print("Passed");
+}
+
+if status != "completed" {
+    retry_task();
+}
+```
+
+### Logical Operators
+
+| Operator | Description | Example |
+|---------|-----|------|
+| `and` | Logical AND | `a and b` |
+| `or` | Logical OR | `a or b` |
+| `not` | Logical NOT | `not a` |
+
+```nexa
+// Logical operations
+if is_valid and has_permission {
+    execute_action();
+}
+
+if retry_count > 3 or timeout_occurred {
+    report_failure();
+}
+```
+
+---
+
+## 🐍 Python Escape Hatch (v1.0.1+)
+
+When you need advanced Python features that Nexa doesn't directly support, use the Python escape hatch to embed Python code directly.
+
+### Basic Syntax
+
+```nexa
+python! """
+    # Your Python code here
+    result = complex_calculation()
+    return result
+"""
+```
+
+### Use Cases
+
+1. **Complex Data Processing**: Use NumPy, Pandas, etc.
+2. **Third-party Library Integration**: Call any Python library
+3. **Performance Optimization**: Use optimized Python implementations
+4. **Legacy Code Integration**: Reuse existing Python code
+
+### Complete Example
+
+```nexa
+agent DataAnalyzer {
+    prompt: "Analyze data and provide insights"
+    uses std.fs
+}
+
+flow main {
+    # Read data
+    raw_data = std.fs.file_read("data.csv");
+    
+    # Use Python for complex analysis
+    stats = python! """
+        import json
+        import statistics
+        
+        # Parse data
+        data = json.loads(raw_data)
+        values = [item['value'] for item in data]
+        
+        # Calculate statistics
+        result = {
+            'mean': statistics.mean(values),
+            'median': statistics.median(values),
+            'stdev': statistics.stdev(values) if len(values) > 1 else 0
+        }
+        
+        return json.dumps(result)
+    """
+    
+    # Display results
+    print(stats);
+    
+    # Agent provides insights
+    insights = DataAnalyzer.run(stats);
+    print(insights);
+}
+```
+
+!!! warning "Security Note"
+    Python escape hatch bypasses Nexa's sandbox. Use with caution in production environments and ensure code comes from trusted sources.
+
+---
+
 ## 🔍 Built-in Tool Mounting and Environment Sandbox Penetration (`uses` Keyword)
 
 If it only produces strings in the console, the large model is just a "chatting" vase. A true large model agent (Agent) needs to interact with the digital world (like checking weather, deleting files, writing spreadsheets).
