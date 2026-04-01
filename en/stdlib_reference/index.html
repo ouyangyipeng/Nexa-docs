@@ -1,0 +1,5358 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="智能体原生 (Agent-Native) 编程语言">
+      
+      
+      
+        <link rel="canonical" href="https://ouyangyipeng.github.io/Nexa-docs/en/stdlib_reference/">
+      
+      
+        <link rel="prev" href="../cli_reference/">
+      
+      
+        <link rel="next" href="../error_index/">
+      
+      
+        
+          <link rel="alternate" href="../../stdlib_reference/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../img/nexa-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Stdlib API - Nexa Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/agent.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nexa-standard-library-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="Nexa Documentation" class="md-header__button md-logo" aria-label="Nexa Documentation" data-md-component="logo">
+      
+  <img src="../../img/nexa-logo-noframe.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nexa Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stdlib API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../stdlib_reference/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ouyangyipeng/Nexa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ouyangyipeng/Nexa
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part1_basic/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Grammar Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part5_compiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  In-depth Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part4_future/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Community & Future
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference Manual
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="Nexa Documentation" class="md-nav__button md-logo" aria-label="Nexa Documentation" data-md-component="logo">
+      
+  <img src="../../img/nexa-logo-noframe.png" alt="logo">
+
+    </a>
+    Nexa Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ouyangyipeng/Nexa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ouyangyipeng/Nexa
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface & Philosophy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Preface & Philosophy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reshaping Agent Paradigm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface_background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Background & Evolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scenarios & Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grammar Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1_basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part2_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3_extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4_ecosystem_and_stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecosystem & Stdlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-depth Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    In-depth Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_compiler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_enterprise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_architecture_evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Evolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part6_best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Best Practices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Future
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community & Future
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4_future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part7_community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Manual
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Manual
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stdlib API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stdlib API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdfs-file-system-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📁 std.fs - File System Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📁 std.fs - File System Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_append" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_append
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdhttp-http-network-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 std.http - HTTP Network Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 std.http - HTTP Network Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_post
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_put
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdtime-time-and-date-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🕐 std.time - Time and Date Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🕐 std.time - Time and Date Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time_now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_now
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_diff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_timestamp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdjson-json-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 std.json - JSON Data Processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 std.json - JSON Data Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_parse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_stringify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_stringify
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdtext-text-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 std.text - Text Processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 std.text - Text Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text_split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_upper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_upper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_lower" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_lower
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdhash-encryption-and-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 std.hash - Encryption and Encoding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 std.hash - Encryption and Encoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash_md5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hash_md5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash_sha256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hash_sha256
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64_encode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base64_encode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64_decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base64_decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdmath-mathematical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 std.math - Mathematical Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 std.math - Mathematical Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math_calc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        math_calc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math_random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        math_random
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdregex-regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 std.regex - Regular Expressions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 std.regex - Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex_match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        regex_match
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex_replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        regex_replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdshell-shell-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 std.shell - Shell Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 std.shell - Shell Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell_exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_exec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell_which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_which
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdask_human-human-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🙋 std.ask_human - Human Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🙋 std.ask_human - Human Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ask_human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ask_human
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declare-usage-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declare Usage Permission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Invocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Complete Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Complete Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-management-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log Management Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-data-fetcher-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Data Fetcher Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Version History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdfs-file-system-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📁 std.fs - File System Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📁 std.fs - File System Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_append" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_append
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdhttp-http-network-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 std.http - HTTP Network Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 std.http - HTTP Network Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_post
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_put
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdtime-time-and-date-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🕐 std.time - Time and Date Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🕐 std.time - Time and Date Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time_now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_now
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_diff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        time_timestamp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdjson-json-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 std.json - JSON Data Processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 std.json - JSON Data Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json_parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_parse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_stringify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        json_stringify
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdtext-text-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 std.text - Text Processing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 std.text - Text Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text_split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_upper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_upper
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text_lower" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_lower
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdhash-encryption-and-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 std.hash - Encryption and Encoding
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 std.hash - Encryption and Encoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash_md5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hash_md5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash_sha256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hash_sha256
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64_encode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base64_encode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64_decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base64_decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdmath-mathematical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 std.math - Mathematical Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 std.math - Mathematical Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math_calc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        math_calc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math_random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        math_random
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdregex-regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 std.regex - Regular Expressions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 std.regex - Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regex_match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        regex_match
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex_replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        regex_replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdshell-shell-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 std.shell - Shell Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 std.shell - Shell Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell_exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_exec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell_which" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_which
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdask_human-human-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🙋 std.ask_human - Human Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🙋 std.ask_human - Human Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-list_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ask_human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ask_human
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declare-usage-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declare Usage Permission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Invocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Complete Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Complete Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-management-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log Management Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-data-fetcher-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Data Fetcher Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Version History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="nexa-standard-library-reference">Nexa Standard Library Reference<a class="headerlink" href="#nexa-standard-library-reference" title="Permanent link">&para;</a></h1>
+<p>This document describes all namespaces, tool functions, parameters, and usage examples of the Nexa standard library (<code>std</code>).</p>
+<hr />
+<h2 id="overview">📋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Nexa standard library provides built-in tools that enable Agents to interact with the external world. After declaring usage permissions via the <code>uses</code> keyword, Agents can call these tools.</p>
+<h3 id="namespace-overview">Namespace Overview<a class="headerlink" href="#namespace-overview" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th>Tool Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stdfs-file-system-operations"><code>std.fs</code></a></td>
+<td>File system operations</td>
+<td>6</td>
+</tr>
+<tr>
+<td><a href="#stdhttp-http-network-requests"><code>std.http</code></a></td>
+<td>HTTP network requests</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="#stdtime-time-and-date-operations"><code>std.time</code></a></td>
+<td>Time and date operations</td>
+<td>5</td>
+</tr>
+<tr>
+<td><a href="#stdjson-json-data-processing"><code>std.json</code></a></td>
+<td>JSON data processing</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="#stdtext-text-processing"><code>std.text</code></a></td>
+<td>Text processing</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="#stdhash-encryption-and-encoding"><code>std.hash</code></a></td>
+<td>Encryption and encoding</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="#stdmath-mathematical-operations"><code>std.math</code></a></td>
+<td>Mathematical operations</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#stdregex-regular-expressions"><code>std.regex</code></a></td>
+<td>Regular expressions</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#stdshell-shell-commands"><code>std.shell</code></a></td>
+<td>Shell command execution</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="#stdask_human-human-interaction"><code>std.ask_human</code></a></td>
+<td>Human interaction</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="stdfs-file-system-operations">📁 std.fs - File System Operations<a class="headerlink" href="#stdfs-file-system-operations" title="Permanent link">&para;</a></h2>
+<p>File system operations are fundamental capabilities for agents to interact with the local environment.</p>
+<h3 id="tool-list">Tool List<a class="headerlink" href="#tool-list" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#file_read"><code>file_read</code></a></td>
+<td>Read file content</td>
+<td><code>path</code></td>
+</tr>
+<tr>
+<td><a href="#file_write"><code>file_write</code></a></td>
+<td>Write to file</td>
+<td><code>path</code>, <code>content</code></td>
+</tr>
+<tr>
+<td><a href="#file_append"><code>file_append</code></a></td>
+<td>Append to file</td>
+<td><code>path</code>, <code>content</code></td>
+</tr>
+<tr>
+<td><a href="#file_exists"><code>file_exists</code></a></td>
+<td>Check if file exists</td>
+<td><code>path</code></td>
+</tr>
+<tr>
+<td><a href="#file_list"><code>file_list</code></a></td>
+<td>List directory files</td>
+<td><code>directory</code></td>
+</tr>
+<tr>
+<td><a href="#file_delete"><code>file_delete</code></a></td>
+<td>Delete file</td>
+<td><code>path</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="file_read">file_read<a class="headerlink" href="#file_read" title="Permanent link">&para;</a></h4>
+<p>Read file content.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File path</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>utf-8</code></td>
+<td>Encoding format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: File content string, or error message on failure.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent FileReader uses std.fs {
+    role: &quot;File reading assistant&quot;,
+    prompt: &quot;Help users read file content&quot;
+}
+
+flow main {
+    content = FileReader.run(&quot;Read file /tmp/data.txt&quot;);
+    print(content);
+}
+</code></pre></div>
+<hr />
+<h4 id="file_write">file_write<a class="headerlink" href="#file_write" title="Permanent link">&para;</a></h4>
+<p>Write content to file. Creates directory if it doesn't exist.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File path</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File content</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>utf-8</code></td>
+<td>Encoding format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Success message with character count.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent FileWriter uses std.fs {
+    role: &quot;File writing assistant&quot;,
+    prompt: &quot;Help users write files&quot;
+}
+
+flow main {
+    result = FileWriter.run(&quot;Write &#39;Hello Nexa&#39; to /tmp/output.txt&quot;);
+    print(result);
+}
+</code></pre></div>
+<hr />
+<h4 id="file_append">file_append<a class="headerlink" href="#file_append" title="Permanent link">&para;</a></h4>
+<p>Append content to end of file.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File path</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Content to append</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>utf-8</code></td>
+<td>Encoding format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Success message with appended character count.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent LogWriter uses std.fs {
+    role: &quot;Log recording assistant&quot;,
+    prompt: &quot;Help users append logs&quot;
+}
+
+flow main {
+    LogWriter.run(&quot;Append &#39;[2024-01-01] New log entry&#39; to /var/log/app.log&quot;);
+}
+</code></pre></div>
+<hr />
+<h4 id="file_exists">file_exists<a class="headerlink" href="#file_exists" title="Permanent link">&para;</a></h4>
+<p>Check if file or directory exists.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File/directory path</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "exists": bool, "path": string }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent FileChecker uses std.fs {
+    role: &quot;File checking assistant&quot;,
+    prompt: &quot;Check if file exists&quot;
+}
+
+flow main {
+    result = FileChecker.run(&quot;Check if /tmp/config.json exists&quot;);
+    print(result);  // {&quot;exists&quot;: true, &quot;path&quot;: &quot;/tmp/config.json&quot;}
+}
+</code></pre></div>
+<hr />
+<h4 id="file_list">file_list<a class="headerlink" href="#file_list" title="Permanent link">&para;</a></h4>
+<p>List files in directory.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>directory</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Directory path</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>*</code></td>
+<td>File match pattern (glob format)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "files": [string], "count": int }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DirectoryScanner uses std.fs {
+    role: &quot;Directory scanning assistant&quot;,
+    prompt: &quot;List files in directory&quot;
+}
+
+flow main {
+    // List all files
+    all_files = DirectoryScanner.run(&quot;List all files in /tmp directory&quot;);
+
+    // List only .txt files
+    txt_files = DirectoryScanner.run(&quot;List *.txt files in /tmp directory&quot;);
+    print(txt_files);
+}
+</code></pre></div>
+<hr />
+<h4 id="file_delete">file_delete<a class="headerlink" href="#file_delete" title="Permanent link">&para;</a></h4>
+<p>Delete file.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>File path</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Success or error message.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent FileCleaner uses std.fs {
+    role: &quot;File cleanup assistant&quot;,
+    prompt: &quot;Delete specified files&quot;
+}
+
+flow main {
+    result = FileCleaner.run(&quot;Delete /tmp/old_data.txt&quot;);
+    print(result);
+}
+</code></pre></div>
+<hr />
+<h2 id="stdhttp-http-network-requests">🌐 std.http - HTTP Network Requests<a class="headerlink" href="#stdhttp-http-network-requests" title="Permanent link">&para;</a></h2>
+<p>Native network request capabilities supporting RESTful API calls.</p>
+<h3 id="tool-list_1">Tool List<a class="headerlink" href="#tool-list_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#http_get"><code>http_get</code></a></td>
+<td>GET request</td>
+<td><code>url</code></td>
+</tr>
+<tr>
+<td><a href="#http_post"><code>http_post</code></a></td>
+<td>POST request</td>
+<td><code>url</code>, <code>data</code></td>
+</tr>
+<tr>
+<td><a href="#http_put"><code>http_put</code></a></td>
+<td>PUT request</td>
+<td><code>url</code>, <code>data</code></td>
+</tr>
+<tr>
+<td><a href="#http_delete"><code>http_delete</code></a></td>
+<td>DELETE request</td>
+<td><code>url</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="http_get">http_get<a class="headerlink" href="#http_get" title="Permanent link">&para;</a></h4>
+<p>Send HTTP GET request.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request URL</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>object</td>
+<td>No</td>
+<td><code>{}</code></td>
+<td>Request headers dictionary</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Timeout in seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Response content string.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent WebFetcher uses std.http {
+    role: &quot;Web fetching assistant&quot;,
+    prompt: &quot;Fetch web content&quot;
+}
+
+flow main {
+    content = WebFetcher.run(&quot;GET https://api.example.com/data&quot;);
+    print(content);
+}
+</code></pre></div>
+<hr />
+<h4 id="http_post">http_post<a class="headerlink" href="#http_post" title="Permanent link">&para;</a></h4>
+<p>Send HTTP POST request.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request URL</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request body content</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>object</td>
+<td>No</td>
+<td><code>{}</code></td>
+<td>Request headers dictionary</td>
+</tr>
+<tr>
+<td><code>content_type</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>application/json</code></td>
+<td>Content type</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Timeout in seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "status": int, "body": string }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent ApiClient uses std.http {
+    role: &quot;API client&quot;,
+    prompt: &quot;Call RESTful API&quot;
+}
+
+flow main {
+    payload = &#39;{&quot;name&quot;: &quot;Nexa&quot;, &quot;version&quot;: &quot;1.0&quot;}&#39;;
+    result = ApiClient.run(f&quot;POST {payload} to https://api.example.com/create&quot;);
+    print(result);
+}
+</code></pre></div>
+<hr />
+<h4 id="http_put">http_put<a class="headerlink" href="#http_put" title="Permanent link">&para;</a></h4>
+<p>Send HTTP PUT request.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request URL</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request body content</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>object</td>
+<td>No</td>
+<td><code>{}</code></td>
+<td>Request headers dictionary</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Timeout in seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "status": int, "body": string }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DataUpdater uses std.http {
+    role: &quot;Data update assistant&quot;,
+    prompt: &quot;Update remote data&quot;
+}
+
+flow main {
+    update_data = &#39;{&quot;status&quot;: &quot;completed&quot;}&#39;;
+    result = DataUpdater.run(f&quot;PUT {update_data} to https://api.example.com/item/123&quot;);
+}
+</code></pre></div>
+<hr />
+<h4 id="http_delete">http_delete<a class="headerlink" href="#http_delete" title="Permanent link">&para;</a></h4>
+<p>Send HTTP DELETE request.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Request URL</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>object</td>
+<td>No</td>
+<td><code>{}</code></td>
+<td>Request headers dictionary</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Timeout in seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "status": int, "body": string }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent ResourceDeleter uses std.http {
+    role: &quot;Resource deletion assistant&quot;,
+    prompt: &quot;Delete remote resources&quot;
+}
+
+flow main {
+    result = ResourceDeleter.run(&quot;DELETE https://api.example.com/item/123&quot;);
+}
+</code></pre></div>
+<hr />
+<h2 id="stdtime-time-and-date-operations">🕐 std.time - Time and Date Operations<a class="headerlink" href="#stdtime-time-and-date-operations" title="Permanent link">&para;</a></h2>
+<p>Time-related operation tools.</p>
+<h3 id="tool-list_2">Tool List<a class="headerlink" href="#tool-list_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#time_now"><code>time_now</code></a></td>
+<td>Get current time</td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="#time_diff"><code>time_diff</code></a></td>
+<td>Calculate time difference</td>
+<td><code>start</code>, <code>end</code></td>
+</tr>
+<tr>
+<td><a href="#time_format"><code>time_format</code></a></td>
+<td>Format time</td>
+<td><code>iso_string</code></td>
+</tr>
+<tr>
+<td><a href="#time_sleep"><code>time_sleep</code></a></td>
+<td>Sleep for specified seconds</td>
+<td><code>seconds</code></td>
+</tr>
+<tr>
+<td><a href="#time_timestamp"><code>time_timestamp</code></a></td>
+<td>Get timestamp</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="time_now">time_now<a class="headerlink" href="#time_now" title="Permanent link">&para;</a></h4>
+<p>Get current time.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>%Y-%m-%d %H:%M:%S</code></td>
+<td>Time format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Formatted time string.</p>
+<p><strong>Format Specifiers</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%Y</code></td>
+<td>Year</td>
+<td>2024</td>
+</tr>
+<tr>
+<td><code>%m</code></td>
+<td>Month</td>
+<td>01-12</td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>Day</td>
+<td>01-31</td>
+</tr>
+<tr>
+<td><code>%H</code></td>
+<td>Hour (24-hour)</td>
+<td>00-23</td>
+</tr>
+<tr>
+<td><code>%M</code></td>
+<td>Minute</td>
+<td>00-59</td>
+</tr>
+<tr>
+<td><code>%S</code></td>
+<td>Second</td>
+<td>00-59</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent TimeHelper uses std.time {
+    role: &quot;Time assistant&quot;,
+    prompt: &quot;Provide time-related services&quot;
+}
+
+flow main {
+    // Default format
+    now = TimeHelper.run(&quot;Get current time&quot;);
+    print(now);  // 2024-01-15 10:30:00
+
+    // Custom format
+    date_only = TimeHelper.run(&quot;Get current date in format %Y-%m-%d&quot;);
+    print(date_only);  // 2024-01-15
+}
+</code></pre></div>
+<hr />
+<h4 id="time_diff">time_diff<a class="headerlink" href="#time_diff" title="Permanent link">&para;</a></h4>
+<p>Calculate difference between two times.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Start time (ISO format)</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>End time (ISO format)</td>
+</tr>
+<tr>
+<td><code>unit</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>seconds</code></td>
+<td>Unit: <code>seconds</code>/<code>minutes</code>/<code>hours</code>/<code>days</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "value": float, "unit": string, "days": int, "seconds": float }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DurationCalculator uses std.time {
+    role: &quot;Duration calculator&quot;,
+    prompt: &quot;Calculate time difference&quot;
+}
+
+flow main {
+    result = DurationCalculator.run(
+        &quot;Calculate hours between 2024-01-01T00:00:00 and 2024-01-02T12:00:00&quot;
+    );
+    print(result);  // {&quot;value&quot;: 36, &quot;unit&quot;: &quot;hours&quot;, ...}
+}
+</code></pre></div>
+<hr />
+<h4 id="time_format">time_format<a class="headerlink" href="#time_format" title="Permanent link">&para;</a></h4>
+<p>Convert ISO format time to specified format.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iso_string</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>ISO time string</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>%Y-%m-%d %H:%M:%S</code></td>
+<td>Output format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Formatted time string.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DateFormatter uses std.time {
+    role: &quot;Date formatting assistant&quot;,
+    prompt: &quot;Convert time format&quot;
+}
+
+flow main {
+    result = DateFormatter.run(
+        &quot;Format 2024-01-15T10:30:00 to show only date&quot;
+    );
+    print(result);  // 2024-01-15
+}
+</code></pre></div>
+<hr />
+<h4 id="time_sleep">time_sleep<a class="headerlink" href="#time_sleep" title="Permanent link">&para;</a></h4>
+<p>Pause execution for specified seconds.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seconds</code></td>
+<td>int</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Sleep seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "sleep": int }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DelayedTask uses std.time {
+    role: &quot;Delayed task assistant&quot;,
+    prompt: &quot;Execute delayed tasks&quot;
+}
+
+flow main {
+    print(&quot;Starting wait...&quot;);
+    DelayedTask.run(&quot;Wait for 5 seconds&quot;);
+    print(&quot;Wait complete!&quot;);
+}
+</code></pre></div>
+<hr />
+<h4 id="time_timestamp">time_timestamp<a class="headerlink" href="#time_timestamp" title="Permanent link">&para;</a></h4>
+<p>Get current Unix timestamp.</p>
+<p><strong>Parameters</strong>: None</p>
+<p><strong>Return Value</strong>: JSON format <code>{ "timestamp": int }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent TimestampGenerator uses std.time {
+    role: &quot;Timestamp generator&quot;,
+    prompt: &quot;Generate timestamps&quot;
+}
+
+flow main {
+    ts = TimestampGenerator.run(&quot;Get current timestamp&quot;);
+    print(ts);  // {&quot;timestamp&quot;: 1705312200}
+}
+</code></pre></div>
+<hr />
+<h2 id="stdjson-json-data-processing">📦 std.json - JSON Data Processing<a class="headerlink" href="#stdjson-json-data-processing" title="Permanent link">&para;</a></h2>
+<p>JSON data parsing, querying, and serialization.</p>
+<h3 id="tool-list_3">Tool List<a class="headerlink" href="#tool-list_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#json_parse"><code>json_parse</code></a></td>
+<td>Parse JSON</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#json_get"><code>json_get</code></a></td>
+<td>Get JSON path value</td>
+<td><code>text</code>, <code>path</code></td>
+</tr>
+<tr>
+<td><a href="#json_stringify"><code>json_stringify</code></a></td>
+<td>Serialize to JSON</td>
+<td><code>data</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="json_parse">json_parse<a class="headerlink" href="#json_parse" title="Permanent link">&para;</a></h4>
+<p>Parse JSON string.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>JSON string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Formatted JSON string (easy to read).</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent JsonParser uses std.json {
+    role: &quot;JSON parsing assistant&quot;,
+    prompt: &quot;Parse JSON data&quot;
+}
+
+flow main {
+    raw = &#39;{&quot;name&quot;:&quot;Nexa&quot;,&quot;version&quot;:1.0}&#39;;
+    parsed = JsonParser.run(f&quot;Parse {raw}&quot;);
+    print(parsed);
+}
+</code></pre></div>
+<hr />
+<h4 id="json_get">json_get<a class="headerlink" href="#json_get" title="Permanent link">&para;</a></h4>
+<p>Extract value from specified JSON path.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>JSON string</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Path (e.g., <code>data.items.0</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Value at the specified path.</p>
+<p><strong>Path Format</strong>:
+- Use <code>.</code> to separate levels
+- Array indices use numbers, e.g., <code>items.0.name</code></p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent DataExtractor uses std.json {
+    role: &quot;Data extraction assistant&quot;,
+    prompt: &quot;Extract data from JSON&quot;
+}
+
+flow main {
+    json_data = &#39;{&quot;user&quot;:{&quot;name&quot;:&quot;Alice&quot;,&quot;age&quot;:30}}&#39;;
+    name = DataExtractor.run(f&quot;Get user.name from {json_data}&quot;);
+    print(name);  // &quot;Alice&quot;
+}
+</code></pre></div>
+<hr />
+<h4 id="json_stringify">json_stringify<a class="headerlink" href="#json_stringify" title="Permanent link">&para;</a></h4>
+<p>Serialize data to JSON string.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Data object (JSON format string)</td>
+</tr>
+<tr>
+<td><code>indent</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>2</code></td>
+<td>Indent spaces</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Formatted JSON string.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent JsonSerializer uses std.json {
+    role: &quot;JSON serialization assistant&quot;,
+    prompt: &quot;Serialize data to JSON&quot;
+}
+
+flow main {
+    data = &#39;{&quot;name&quot;:&quot;Nexa&quot;}&#39;;
+    result = JsonSerializer.run(f&quot;Serialize {data} with 4-space indent&quot;);
+    print(result);
+}
+</code></pre></div>
+<hr />
+<h2 id="stdtext-text-processing">📝 std.text - Text Processing<a class="headerlink" href="#stdtext-text-processing" title="Permanent link">&para;</a></h2>
+<p>Text processing tools.</p>
+<h3 id="tool-list_4">Tool List<a class="headerlink" href="#tool-list_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#text_split"><code>text_split</code></a></td>
+<td>Split text</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#text_replace"><code>text_replace</code></a></td>
+<td>Replace text</td>
+<td><code>text</code>, <code>old</code>, <code>new</code></td>
+</tr>
+<tr>
+<td><a href="#text_upper"><code>text_upper</code></a></td>
+<td>Convert to uppercase</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#text_lower"><code>text_lower</code></a></td>
+<td>Convert to lowercase</td>
+<td><code>text</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="text_split">text_split<a class="headerlink" href="#text_split" title="Permanent link">&para;</a></h4>
+<p>Split text into parts.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Text to split</td>
+</tr>
+<tr>
+<td><code>delimiter</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>\n</code></td>
+<td>Delimiter</td>
+</tr>
+<tr>
+<td><code>max_splits</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>-1</code></td>
+<td>Maximum splits (-1 means unlimited)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "parts": [string], "count": int }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent TextSplitter uses std.text {
+    role: &quot;Text splitting assistant&quot;,
+    prompt: &quot;Split text&quot;
+}
+
+flow main {
+    text = &quot;one,two,three,four&quot;;
+    result = TextSplitter.run(f&quot;Split {text} by comma&quot;);
+    print(result);  // {&quot;parts&quot;: [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;], &quot;count&quot;: 4}
+}
+</code></pre></div>
+<hr />
+<h4 id="text_replace">text_replace<a class="headerlink" href="#text_replace" title="Permanent link">&para;</a></h4>
+<p>Replace content in text.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Original text</td>
+</tr>
+<tr>
+<td><code>old</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Content to replace</td>
+</tr>
+<tr>
+<td><code>new</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Replacement content</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>-1</code></td>
+<td>Replace count (-1 means all)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Replaced text.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent TextReplacer uses std.text {
+    role: &quot;Text replacement assistant&quot;,
+    prompt: &quot;Replace content in text&quot;
+}
+
+flow main {
+    text = &quot;Hello World, Hello Nexa&quot;;
+    result = TextReplacer.run(f&quot;Replace Hello with Hi in {text}&quot;);
+    print(result);  // &quot;Hi World, Hi Nexa&quot;
+}
+</code></pre></div>
+<hr />
+<h4 id="text_upper">text_upper<a class="headerlink" href="#text_upper" title="Permanent link">&para;</a></h4>
+<p>Convert text to uppercase.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Input text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Uppercase text.</p>
+<hr />
+<h4 id="text_lower">text_lower<a class="headerlink" href="#text_lower" title="Permanent link">&para;</a></h4>
+<p>Convert text to lowercase.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Input text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Lowercase text.</p>
+<hr />
+<h2 id="stdhash-encryption-and-encoding">🔐 std.hash - Encryption and Encoding<a class="headerlink" href="#stdhash-encryption-and-encoding" title="Permanent link">&para;</a></h2>
+<p>Hash calculation and encoding tools.</p>
+<h3 id="tool-list_5">Tool List<a class="headerlink" href="#tool-list_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#hash_md5"><code>hash_md5</code></a></td>
+<td>MD5 hash</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#hash_sha256"><code>hash_sha256</code></a></td>
+<td>SHA256 hash</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#base64_encode"><code>base64_encode</code></a></td>
+<td>Base64 encode</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><a href="#base64_decode"><code>base64_decode</code></a></td>
+<td>Base64 decode</td>
+<td><code>text</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="hash_md5">hash_md5<a class="headerlink" href="#hash_md5" title="Permanent link">&para;</a></h4>
+<p>Calculate MD5 hash of text.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Input text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: 32-character MD5 hash string.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent HashHelper uses std.hash {
+    role: &quot;Hash calculation assistant&quot;,
+    prompt: &quot;Calculate text hash&quot;
+}
+
+flow main {
+    hash = HashHelper.run(&quot;Calculate MD5 of &#39;Hello Nexa&#39;&quot;);
+    print(hash);  // 32-character hash value
+}
+</code></pre></div>
+<hr />
+<h4 id="hash_sha256">hash_sha256<a class="headerlink" href="#hash_sha256" title="Permanent link">&para;</a></h4>
+<p>Calculate SHA256 hash of text.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Input text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: 64-character SHA256 hash string.</p>
+<hr />
+<h4 id="base64_encode">base64_encode<a class="headerlink" href="#base64_encode" title="Permanent link">&para;</a></h4>
+<p>Encode text to Base64 format.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Input text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Base64 encoded string.</p>
+<hr />
+<h4 id="base64_decode">base64_decode<a class="headerlink" href="#base64_decode" title="Permanent link">&para;</a></h4>
+<p>Decode Base64 text.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Base64 encoded text</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Decoded original text.</p>
+<hr />
+<h2 id="stdmath-mathematical-operations">🔢 std.math - Mathematical Operations<a class="headerlink" href="#stdmath-mathematical-operations" title="Permanent link">&para;</a></h2>
+<p>Mathematical calculation tools.</p>
+<h3 id="tool-list_6">Tool List<a class="headerlink" href="#tool-list_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#math_calc"><code>math_calc</code></a></td>
+<td>Calculate math expression</td>
+<td><code>expression</code></td>
+</tr>
+<tr>
+<td><a href="#math_random"><code>math_random</code></a></td>
+<td>Generate random number</td>
+<td><code>min_val</code>, <code>max_val</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="math_calc">math_calc<a class="headerlink" href="#math_calc" title="Permanent link">&para;</a></h4>
+<p>Safely calculate mathematical expression.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expression</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Math expression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "result": number, "expression": string }</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Security Limitation</p>
+<p>Only allows digits and <code>+-*/.()</code> characters, other characters are rejected.</p>
+</div>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent Calculator uses std.math {
+    role: &quot;Math calculation assistant&quot;,
+    prompt: &quot;Calculate math expressions&quot;
+}
+
+flow main {
+    result = Calculator.run(&quot;Calculate (10 + 5) * 2&quot;);
+    print(result);  // {&quot;result&quot;: 30, &quot;expression&quot;: &quot;(10 + 5) * 2&quot;}
+}
+</code></pre></div>
+<hr />
+<h4 id="math_random">math_random<a class="headerlink" href="#math_random" title="Permanent link">&para;</a></h4>
+<p>Generate random integer within specified range.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_val</code></td>
+<td>int</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Minimum value</td>
+</tr>
+<tr>
+<td><code>max_val</code></td>
+<td>int</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Maximum value</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Random integer.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent RandomGenerator uses std.math {
+    role: &quot;Random number generator&quot;,
+    prompt: &quot;Generate random numbers&quot;
+}
+
+flow main {
+    num = RandomGenerator.run(&quot;Generate random number between 1 and 100&quot;);
+    print(num);
+}
+</code></pre></div>
+<hr />
+<h2 id="stdregex-regular-expressions">🔍 std.regex - Regular Expressions<a class="headerlink" href="#stdregex-regular-expressions" title="Permanent link">&para;</a></h2>
+<p>Regular expression matching and replacement.</p>
+<h3 id="tool-list_7">Tool List<a class="headerlink" href="#tool-list_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#regex_match"><code>regex_match</code></a></td>
+<td>Regex match</td>
+<td><code>pattern</code>, <code>text</code></td>
+</tr>
+<tr>
+<td><a href="#regex_replace"><code>regex_replace</code></a></td>
+<td>Regex replace</td>
+<td><code>pattern</code>, <code>replacement</code>, <code>text</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="regex_match">regex_match<a class="headerlink" href="#regex_match" title="Permanent link">&para;</a></h4>
+<p>Match text using regular expression.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Regex pattern</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Text to match</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>""</code></td>
+<td>Flags: <code>i</code>(ignore case), <code>m</code>(multiline), <code>s</code>(singleline)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "matches": [string], "count": int }</code>.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent PatternMatcher uses std.regex {
+    role: &quot;Pattern matching assistant&quot;,
+    prompt: &quot;Match regex patterns&quot;
+}
+
+flow main {
+    text = &quot;Email: test@example.com, Phone: 123-456-7890&quot;;
+    emails = PatternMatcher.run(f&quot;Match all email addresses in {text}&quot;);
+    print(emails);
+}
+</code></pre></div>
+<hr />
+<h4 id="regex_replace">regex_replace<a class="headerlink" href="#regex_replace" title="Permanent link">&para;</a></h4>
+<p>Replace text using regular expression.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Regex pattern</td>
+</tr>
+<tr>
+<td><code>replacement</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Replacement content</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Text to process</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>""</code></td>
+<td>Flags</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: Replaced text.</p>
+<hr />
+<h2 id="stdshell-shell-commands">💻 std.shell - Shell Commands<a class="headerlink" href="#stdshell-shell-commands" title="Permanent link">&para;</a></h2>
+<p>Execute system shell commands.</p>
+<h3 id="tool-list_8">Tool List<a class="headerlink" href="#tool-list_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#shell_exec"><code>shell_exec</code></a></td>
+<td>Execute command</td>
+<td><code>command</code></td>
+</tr>
+<tr>
+<td><a href="#shell_which"><code>shell_which</code></a></td>
+<td>Find command path</td>
+<td><code>command</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="shell_exec">shell_exec<a class="headerlink" href="#shell_exec" title="Permanent link">&para;</a></h4>
+<p>Execute shell command.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Command to execute</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>int</td>
+<td>No</td>
+<td><code>30</code></td>
+<td>Timeout in seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "stdout": string, "stderr": string, "returncode": int, "success": bool }</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Security Warning</p>
+<p>Shell command execution has potential risks. Please ensure:
+- Don't execute dangerous commands (like <code>rm -rf /</code>)
+- Validate input parameters
+- Set reasonable timeout</p>
+</div>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent ShellRunner uses std.shell {
+    role: &quot;Shell execution assistant&quot;,
+    prompt: &quot;Execute system commands&quot;
+}
+
+flow main {
+    result = ShellRunner.run(&quot;Execute ls -la /tmp&quot;);
+    print(result.stdout);
+}
+</code></pre></div>
+<hr />
+<h4 id="shell_which">shell_which<a class="headerlink" href="#shell_which" title="Permanent link">&para;</a></h4>
+<p>Find executable file path for command.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Command name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: JSON format <code>{ "command": string, "path": string, "found": bool }</code>.</p>
+<hr />
+<h2 id="stdask_human-human-interaction">🙋 std.ask_human - Human Interaction<a class="headerlink" href="#stdask_human-human-interaction" title="Permanent link">&para;</a></h2>
+<p>Human-in-the-Loop interaction tool.</p>
+<h3 id="tool-list_9">Tool List<a class="headerlink" href="#tool-list_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Required Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ask_human"><code>ask_human</code></a></td>
+<td>Request user input</td>
+<td><code>prompt</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="ask_human">ask_human<a class="headerlink" href="#ask_human" title="Permanent link">&para;</a></h4>
+<p>Request user input for Human-in-the-Loop interaction.</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td>string</td>
+<td><strong>Yes</strong></td>
+<td>-</td>
+<td>Prompt message</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>""</code></td>
+<td>Default value (used when user doesn't input)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value</strong>: User input string.</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight"><pre><span></span><code>agent HumanInterface uses std.ask_human {
+    role: &quot;Human interaction assistant&quot;,
+    prompt: &quot;Interact with user for confirmation&quot;
+}
+
+flow main {
+    // Wait for user input
+    confirmation = HumanInterface.run(&quot;Please confirm if to continue? [y/n]&quot;);
+
+    if (confirmation == &quot;y&quot;) {
+        print(&quot;User confirmed, continuing...&quot;);
+    } else {
+        print(&quot;User rejected, stopping&quot;);
+    }
+}
+</code></pre></div>
+<hr />
+<h2 id="usage">🔧 Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="declare-usage-permission">Declare Usage Permission<a class="headerlink" href="#declare-usage-permission" title="Permanent link">&para;</a></h3>
+<p>Use <code>uses</code> keyword in Agent definition:</p>
+<div class="highlight"><pre><span></span><code>// Single namespace
+agent MyAgent uses std.fs {
+    prompt: &quot;...&quot;
+}
+
+// Multiple namespaces
+agent MultiToolAgent uses std.fs, std.http, std.time {
+    prompt: &quot;...&quot;
+}
+</code></pre></div>
+<h3 id="runtime-invocation">Runtime Invocation<a class="headerlink" href="#runtime-invocation" title="Permanent link">&para;</a></h3>
+<p>Agents call tools via natural language instructions:</p>
+<div class="highlight"><pre><span></span><code>agent Assistant uses std.fs, std.http {
+    role: &quot;Multi-function assistant&quot;,
+    prompt: &quot;Help users complete file and network operations&quot;
+}
+
+flow main {
+    // Natural language tool invocation
+    result = Assistant.run(&quot;Read /tmp/data.txt and POST to https://api.example.com/upload&quot;);
+    print(result);
+}
+</code></pre></div>
+<hr />
+<h2 id="complete-examples">📚 Complete Examples<a class="headerlink" href="#complete-examples" title="Permanent link">&para;</a></h2>
+<h3 id="log-management-agent">Log Management Agent<a class="headerlink" href="#log-management-agent" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>agent LogManager uses std.fs, std.time {
+    role: &quot;Log management expert&quot;,
+    model: &quot;deepseek/deepseek-chat&quot;,
+    prompt: &quot;&quot;&quot;
+    You are a log management expert, you can:
+    - Read and analyze log files
+    - Create and append log entries
+    - Provide timestamp information
+    &quot;&quot;&quot;
+}
+
+flow main {
+    task = &quot;&quot;&quot;
+    1. Get current timestamp
+    2. Create log entry: [timestamp] System started
+    3. Append to /var/log/nexa.log
+    &quot;&quot;&quot;;
+
+    result = LogManager.run(task);
+    print(result);
+}
+</code></pre></div>
+<h3 id="api-data-fetcher-agent">API Data Fetcher Agent<a class="headerlink" href="#api-data-fetcher-agent" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>agent DataFetcher uses std.http, std.json {
+    role: &quot;Data fetching expert&quot;,
+    prompt: &quot;Fetch data from API and parse JSON&quot;
+}
+
+flow main {
+    task = &quot;&quot;&quot;
+    1. GET https://api.example.com/users
+    2. Parse returned JSON
+    3. Extract name field of first user
+    &quot;&quot;&quot;;
+
+    name = DataFetcher.run(task);
+    print(f&quot;First user: {name}&quot;);
+}
+</code></pre></div>
+<hr />
+<h2 id="version-history">📊 Version History<a class="headerlink" href="#version-history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Updates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>Added <code>std.text</code>, <code>std.hash</code>, <code>std.math</code>, <code>std.regex</code> namespaces</td>
+</tr>
+<tr>
+<td>v0.9.7</td>
+<td>Added <code>std.shell</code>, <code>std.ask_human</code> namespaces</td>
+</tr>
+<tr>
+<td>v0.9</td>
+<td>Completed file operation tools (<code>append</code>, <code>delete</code>)</td>
+</tr>
+<tr>
+<td>v0.8</td>
+<td>Added HTTP PUT/DELETE methods</td>
+</tr>
+<tr>
+<td>v0.7</td>
+<td>Initial standard library release (<code>std.fs</code>, <code>std.http</code>, <code>std.time</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Last updated: 2026-03-28 | Based on Nexa v0.9.7-alpha / v1.0-alpha AVM</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<section class="md-comments" aria-label="评论区">
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="ouyangyipeng/Nexa-docs"
+    data-repo-id="R_kgDORpFikw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORpFik84C4knT"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async
+  ></script>
+  <script>
+    var giscus = document.querySelector("script[src*=\"giscus\"]")
+    function resolveGiscusTheme() {
+      var palette = typeof __md_get === "function" ? __md_get("__palette") : null
+      if (palette && typeof palette.color === "object") {
+        return palette.color.scheme === "slate" ? "transparent_dark" : "light"
+      }
+      return "light"
+    }
+    if (giscus) {
+      giscus.setAttribute("data-theme", resolveGiscusTheme())
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      var ref = document.querySelector("[data-md-component=\"palette\"]")
+      if (!ref) { return }
+      ref.addEventListener("change", function () {
+        var frame = document.querySelector(".giscus-frame")
+        if (!frame || !frame.contentWindow) { return }
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: resolveGiscusTheme() } } },
+          "https://giscus.app"
+        )
+      })
+    })
+  </script>
+</section>
+
+                
+  <div
+  class="yat-agent"
+  data-yat-agent
+  data-search-index-url="../../search/search_index.json"
+  data-current-page="stdlib_reference.en.md"
+  data-current-title="Stdlib API"
+>
+  <div class="yat-agent__nudge" data-agent-nudge>
+    <span>快来问问agent吧！</span>
+    <button class="yat-agent__nudge-close" type="button" data-agent-dismiss-nudge aria-label="关闭提示">×</button>
+  </div>
+  <button class="yat-agent__fab" type="button" aria-expanded="false" aria-controls="yat-agent-panel" aria-label="打开文档助手">
+    <img class="yat-agent__fab-logo" src="../../img/nexa-logo-noframe.png" alt="">
+  </button>
+
+  <section class="yat-agent__panel" id="yat-agent-panel" aria-label="文档助手">
+    <header class="yat-agent__header">
+      <div>
+        <p class="yat-agent__eyebrow">Nexa Agent</p>
+        <h2>Nexa 文档助手</h2>
+      </div>
+      <button class="yat-agent__icon-button" type="button" data-agent-close aria-label="关闭对话窗">关闭</button>
+    </header>
+
+    <div class="yat-agent__messages" data-agent-messages aria-live="polite">
+      <article class="yat-agent__message yat-agent__message--assistant yat-agent__message--intro">
+        <p>我是Nexa文档AI助手，可以问我有关文档的一切！</p>
+      </article>
+    </div>
+
+    <form class="yat-agent__composer" data-agent-form>
+      <textarea
+        class="yat-agent__input"
+        name="prompt"
+        rows="1"
+        placeholder="Nexa的>>操作符可以怎么用？"
+        required
+      ></textarea>
+      <div class="yat-agent__composer-actions">
+        <span class="yat-agent__meta" data-agent-status data-ready="true">
+          <span class="yat-agent__meta-dot" aria-hidden="true"></span>
+          <span>由AI Hub提供支持</span>
+        </span>
+        <button class="md-button md-button--primary yat-agent__send" type="submit">发送</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script type="module" src="../../javascripts/doc-agent.js"></script>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../cli_reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CLI Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                CLI Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../error_index/" class="md-footer__link md-footer__link--next" aria-label="Next: Error Index">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Error Index
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../javascripts/navigation-accordion.js"></script>
+      
+        <script src="../../javascripts/image-lightbox.js"></script>
+      
+    
+  </body>
+</html>

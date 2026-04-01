@@ -1,0 +1,3564 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="智能体原生 (Agent-Native) 编程语言">
+      
+      
+      
+        <link rel="canonical" href="https://ouyangyipeng.github.io/Nexa-docs/en/error_index/">
+      
+      
+        <link rel="prev" href="../stdlib_reference/">
+      
+      
+      
+        
+          <link rel="alternate" href="../../error_index/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../img/nexa-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Error Index - Nexa Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/agent.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nexa-error-index" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="Nexa Documentation" class="md-header__button md-logo" aria-label="Nexa Documentation" data-md-component="logo">
+      
+  <img src="../../img/nexa-logo-noframe.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nexa Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Error Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../error_index/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ouyangyipeng/Nexa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ouyangyipeng/Nexa
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part1_basic/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Grammar Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part5_compiler/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  In-depth Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../part4_future/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Community & Future
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference Manual
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="Nexa Documentation" class="md-nav__button md-logo" aria-label="Nexa Documentation" data-md-component="logo">
+      
+  <img src="../../img/nexa-logo-noframe.png" alt="logo">
+
+    </a>
+    Nexa Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ouyangyipeng/Nexa" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ouyangyipeng/Nexa
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface & Philosophy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Preface & Philosophy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reshaping Agent Paradigm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface_background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Background & Evolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface_scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scenarios & Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grammar Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1_basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part2_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3_extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4_ecosystem_and_stdlib/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecosystem & Stdlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-depth Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    In-depth Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_compiler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_enterprise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5_architecture_evolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Evolution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part6_best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Best Practices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Future
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community & Future
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4_future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part7_community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Manual
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Manual
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stdlib_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stdlib API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Index
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 How to Use This Index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-compile-time-errors-e0xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Compile-Time Errors (E0xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Compile-Time Errors (E0xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e001-undeclared-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E001 - Undeclared Identifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e002-type-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E002 - Type Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e003-missing-required-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E003 - Missing Required Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e004-duplicate-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E004 - Duplicate Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e005-invalid-model-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E005 - Invalid Model Identifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e006-protocol-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E006 - Protocol Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e007-tool-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E007 - Tool Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e008-syntax-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E008 - Syntax Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e009-invalid-regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E009 - Invalid Regex
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e010-invalid-property-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E010 - Invalid Property Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-runtime-errors-e1xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Runtime Errors (E1xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Runtime Errors (E1xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e101-agent-execution-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E101 - Agent Execution Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e102-model-call-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E102 - Model Call Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e103-protocol-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E103 - Protocol Validation Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e104-tool-execution-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E104 - Tool Execution Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e105-authentication-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E105 - Authentication Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e106-loop-exceeded-maximum-iterations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E106 - Loop Exceeded Maximum Iterations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e107-intent-match-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E107 - Intent Match Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-errors-e2xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration Errors (E2xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuration Errors (E2xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e201-configuration-file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E201 - Configuration File Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e202-invalid-configuration-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E202 - Invalid Configuration Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e203-secrets-file-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E203 - Secrets File Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tool-and-mcp-errors-e3xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tool and MCP Errors (E3xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tool and MCP Errors (E3xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e301-mcp-server-connection-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E301 - MCP Server Connection Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e302-tool-parameter-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E302 - Tool Parameter Validation Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e303-standard-library-tool-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E303 - Standard Library Tool Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-avm-runtime-errors-e4xx-v10-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AVM Runtime Errors (E4xx) - v1.0-alpha
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 AVM Runtime Errors (E4xx) - v1.0-alpha">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e401-avm-bytecode-execution-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E401 - AVM Bytecode Execution Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e402-wasm-sandbox-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E402 - WASM Sandbox Permission Denied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e403-vector-memory-page-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E403 - Vector Memory Page Overflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e404-consensus-operation-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E404 - Consensus Operation Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-warning-messages-w0xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Warning Messages (W0xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Warning Messages (W0xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w001-unused-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W001 - Unused Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w002-performance-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W002 - Performance Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w003-deprecation-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W003 - Deprecation Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-error-handling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Error Handling Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Error Handling Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-use-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Use try/catch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-add-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Add Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-set-reasonable-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Set Reasonable Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-prevent-infinite-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Prevent Infinite Loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Related Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 How to Use This Index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-compile-time-errors-e0xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Compile-Time Errors (E0xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Compile-Time Errors (E0xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e001-undeclared-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E001 - Undeclared Identifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e002-type-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E002 - Type Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e003-missing-required-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E003 - Missing Required Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e004-duplicate-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E004 - Duplicate Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e005-invalid-model-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E005 - Invalid Model Identifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e006-protocol-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E006 - Protocol Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e007-tool-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E007 - Tool Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e008-syntax-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E008 - Syntax Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e009-invalid-regex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E009 - Invalid Regex
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e010-invalid-property-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E010 - Invalid Property Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-runtime-errors-e1xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Runtime Errors (E1xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Runtime Errors (E1xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e101-agent-execution-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E101 - Agent Execution Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e102-model-call-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E102 - Model Call Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e103-protocol-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E103 - Protocol Validation Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e104-tool-execution-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E104 - Tool Execution Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e105-authentication-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E105 - Authentication Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e106-loop-exceeded-maximum-iterations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E106 - Loop Exceeded Maximum Iterations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e107-intent-match-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E107 - Intent Match Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-errors-e2xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration Errors (E2xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuration Errors (E2xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e201-configuration-file-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E201 - Configuration File Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e202-invalid-configuration-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E202 - Invalid Configuration Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e203-secrets-file-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E203 - Secrets File Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tool-and-mcp-errors-e3xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tool and MCP Errors (E3xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tool and MCP Errors (E3xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e301-mcp-server-connection-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E301 - MCP Server Connection Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e302-tool-parameter-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E302 - Tool Parameter Validation Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e303-standard-library-tool-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E303 - Standard Library Tool Not Found
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-avm-runtime-errors-e4xx-v10-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AVM Runtime Errors (E4xx) - v1.0-alpha
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 AVM Runtime Errors (E4xx) - v1.0-alpha">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e401-avm-bytecode-execution-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E401 - AVM Bytecode Execution Failed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e402-wasm-sandbox-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E402 - WASM Sandbox Permission Denied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e403-vector-memory-page-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E403 - Vector Memory Page Overflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e404-consensus-operation-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E404 - Consensus Operation Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-warning-messages-w0xx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Warning Messages (W0xx)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Warning Messages (W0xx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w001-unused-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W001 - Unused Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w002-performance-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W002 - Performance Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w003-deprecation-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W003 - Deprecation Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-error-handling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Error Handling Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Error Handling Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-use-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Use try/catch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-add-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Add Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-set-reasonable-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Set Reasonable Timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-prevent-infinite-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Prevent Infinite Loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Related Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="nexa-error-index">Nexa Error Index<a class="headerlink" href="#nexa-error-index" title="Permanent link">&para;</a></h1>
+<p>This index contains all error codes, cause analysis, and solutions that may be generated by the Nexa compiler and runtime.</p>
+<hr />
+<h2 id="how-to-use-this-index">📖 How to Use This Index<a class="headerlink" href="#how-to-use-this-index" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Search by Error Code</strong>: If you see an error code like <code>E001</code>, look it up directly in the table below</li>
+<li><strong>Browse by Category</strong>: Errors are categorized into compile-time errors, runtime errors, tool errors, etc.</li>
+<li><strong>View Solutions</strong>: Each error comes with detailed cause analysis and resolution suggestions</li>
+</ol>
+<hr />
+<h2 id="1-compile-time-errors-e0xx">1. Compile-Time Errors (E0xx)<a class="headerlink" href="#1-compile-time-errors-e0xx" title="Permanent link">&para;</a></h2>
+<p>Compile-time errors are detected during the code compilation phase, indicating syntax or semantic issues in the code.</p>
+<h3 id="e001-undeclared-identifier">E001 - Undeclared Identifier<a class="headerlink" href="#e001-undeclared-identifier" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E001: Undeclared identifier &#39;X&#39;
+  --&gt; main.nexa:15:5
+   |
+15 |     result = UnknownAgent.run(input);
+   |              ^^^^^^^^^^^^^ &#39;UnknownAgent&#39; not found
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Referenced an undefined Agent, Tool, or Protocol
+- Identifier typo
+- Forgot to import necessary modules</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Undeclared
+result = WeatherBot.run(input);
+
+// ✅ Correct: Declare before use
+agent WeatherBot {
+    role: &quot;Weather Assistant&quot;,
+    prompt: &quot;Answer weather-related questions&quot;
+}
+
+result = WeatherBot.run(input);
+</code></pre></div>
+<hr />
+<h3 id="e002-type-mismatch">E002 - Type Mismatch<a class="headerlink" href="#e002-type-mismatch" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E002: Type mismatch
+  --&gt; main.nexa:23:20
+   |
+23 | protocol Report { score: &quot;number&quot; }
+   |                    ^^^^^ expected &#39;number&#39;, found &#39;string&#39;
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Protocol field type doesn't match actual output
+- Type annotation format error</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Type annotation format error
+protocol Report {
+    score: number    // Type not in quotes
+}
+
+// ✅ Correct: Type annotation needs quotes
+protocol Report {
+    score: &quot;number&quot;  // Correct format
+}
+</code></pre></div>
+<hr />
+<h3 id="e003-missing-required-property">E003 - Missing Required Property<a class="headerlink" href="#e003-missing-required-property" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E003: Missing required property &#39;role&#39;
+  --&gt; main.nexa:10:1
+   |
+10 | agent MyAgent {
+   | ^^^^^^^^^^^^^ &#39;role&#39; property is required
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Agent missing required <code>role</code> property
+- Agent missing required <code>prompt</code> property</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Missing required property
+agent MyAgent {
+    model: &quot;gpt-4&quot;
+}
+
+// ✅ Correct: Add required properties
+agent MyAgent {
+    role: &quot;Intelligent Assistant&quot;,       // Required
+    prompt: &quot;Help users solve problems&quot;, // Required
+    model: &quot;gpt-4&quot;          // Optional
+}
+</code></pre></div>
+<hr />
+<h3 id="e004-duplicate-declaration">E004 - Duplicate Declaration<a class="headerlink" href="#e004-duplicate-declaration" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E004: Duplicate declaration &#39;Analyst&#39;
+  --&gt; main.nexa:25:1
+   |
+25 | agent Analyst {
+   | ^^^^^^^^^^^^^ &#39;Analyst&#39; already declared at line 10
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Multiple Agents, Tools, or Protocols with the same name defined in the same scope</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Duplicate declaration
+agent Analyst { role: &quot;Analyst&quot;, prompt: &quot;...&quot; }
+agent Analyst { role: &quot;Data Analyst&quot;, prompt: &quot;...&quot; }  // Duplicate!
+
+// ✅ Correct: Use different names
+agent DataAnalyst { role: &quot;Data Analyst&quot;, prompt: &quot;...&quot; }
+agent MarketAnalyst { role: &quot;Market Analyst&quot;, prompt: &quot;...&quot; }
+</code></pre></div>
+<hr />
+<h3 id="e005-invalid-model-identifier">E005 - Invalid Model Identifier<a class="headerlink" href="#e005-invalid-model-identifier" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E005: Invalid model identifier &#39;gpt5&#39;
+  --&gt; main.nexa:12:12
+   |
+12 |     model: &quot;gpt5&quot;,
+   |            ^^^^^ &#39;gpt5&#39; is not a valid model
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Model name typo
+- Using an unsupported model</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Invalid model name
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    model: &quot;gpt5&quot;  // Doesn&#39;t exist
+}
+
+// ✅ Correct: Use valid model
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    model: &quot;gpt-4&quot;  // Or gpt-4o, claude-3-sonnet, etc.
+}
+</code></pre></div>
+<p><strong>Supported Models List</strong>:
+- OpenAI: <code>gpt-4</code>, <code>gpt-4-turbo</code>, <code>gpt-4o</code>, <code>gpt-3.5-turbo</code>
+- Anthropic: <code>claude-3-opus</code>, <code>claude-3-sonnet</code>, <code>claude-3-haiku</code>
+- Local: <code>llama-2</code>, <code>mistral</code>, etc. (requires local model configuration)</p>
+<hr />
+<h3 id="e006-protocol-not-found">E006 - Protocol Not Found<a class="headerlink" href="#e006-protocol-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E006: Protocol &#39;ReportFormat&#39; not found
+  --&gt; main.nexa:18:30
+   |
+18 | agent Reporter implements ReportFormat {
+   |                              ^^^^^^^^^^^^^ not declared
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Protocol referenced by <code>implements</code> is not declared
+- Protocol name typo</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Referencing undeclared Protocol
+agent Reporter implements ReportFormat {
+    role: &quot;Reporter&quot;,
+    prompt: &quot;...&quot;
+}
+
+// ✅ Correct: Declare Protocol first
+protocol ReportFormat {
+    title: &quot;string&quot;,
+    content: &quot;string&quot;
+}
+
+agent Reporter implements ReportFormat {
+    role: &quot;Reporter&quot;,
+    prompt: &quot;...&quot;
+}
+</code></pre></div>
+<hr />
+<h3 id="e007-tool-not-found">E007 - Tool Not Found<a class="headerlink" href="#e007-tool-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E007: Tool &#39;web_search&#39; not found
+  --&gt; main.nexa:20:20
+   |
+20 | agent Searcher uses web_search {
+   |                    ^^^^^^^^^^ not declared
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Tool referenced by <code>uses</code> is not declared
+- Tool name typo
+- Standard library not imported</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Referencing undeclared Tool
+agent Searcher uses web_search {
+    role: &quot;Search Assistant&quot;,
+    prompt: &quot;...&quot;
+}
+
+// ✅ Correct Method 1: Declare Tool
+tool web_search {
+    description: &quot;Search the web&quot;,
+    parameters: {&quot;query&quot;: &quot;string&quot;}
+}
+
+agent Searcher uses web_search {
+    role: &quot;Search Assistant&quot;,
+    prompt: &quot;...&quot;
+}
+
+// ✅ Correct Method 2: Use Standard Library
+agent Searcher uses std.web_search {
+    role: &quot;Search Assistant&quot;,
+    prompt: &quot;...&quot;
+}
+</code></pre></div>
+<hr />
+<h3 id="e008-syntax-error">E008 - Syntax Error<a class="headerlink" href="#e008-syntax-error" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E008: Syntax error
+  --&gt; main.nexa:30:1
+   |
+30 | agent MyAgent
+   | ^^^^^^^^^^^^^ expected &#39;{&#39; after agent name
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Missing necessary syntax elements (brackets, commas, etc.)
+- Keyword typo
+- Indentation or format issues</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Missing braces
+agent MyAgent
+    role: &quot;Assistant&quot;
+
+// ✅ Correct: Complete syntax
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;
+}
+</code></pre></div>
+<hr />
+<h3 id="e009-invalid-regex">E009 - Invalid Regex<a class="headerlink" href="#e009-invalid-regex" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E009: Invalid regex pattern
+  --&gt; main.nexa:15:20
+   |
+15 |     fast_match r&quot;[a-z&quot; against input
+   |                 ^^^^^ unterminated character class
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Regex syntax error used in <code>fast_match</code></p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Incomplete regex
+semantic_if &quot;Match email&quot; fast_match r&quot;[a-z+@&quot; against input {
+    ...
+}
+
+// ✅ Correct: Complete regex
+semantic_if &quot;Match email&quot; fast_match r&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&quot; against input {
+    ...
+}
+</code></pre></div>
+<hr />
+<h3 id="e010-invalid-property-value">E010 - Invalid Property Value<a class="headerlink" href="#e010-invalid-property-value" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E010: Invalid property value for &#39;memory&#39;
+  --&gt; main.nexa:12:14
+   |
+12 |     memory: &quot;permanent&quot;,
+   |              ^^^^^^^^^^ expected &#39;short&#39;, &#39;long&#39;, or &#39;session&#39;
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Property value not in allowed options range</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Invalid memory value
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    memory: &quot;permanent&quot;  // Invalid
+}
+
+// ✅ Correct: Use valid value
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    memory: &quot;long&quot;  // Valid values: short, session, long
+}
+</code></pre></div>
+<hr />
+<h2 id="2-runtime-errors-e1xx">2. Runtime Errors (E1xx)<a class="headerlink" href="#2-runtime-errors-e1xx" title="Permanent link">&para;</a></h2>
+<p>Runtime errors occur during program execution, usually related to external resources or configuration.</p>
+<h3 id="e101-agent-execution-timeout">E101 - Agent Execution Timeout<a class="headerlink" href="#e101-agent-execution-timeout" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E101: Agent execution timeout
+  Agent: &#39;Analyst&#39;
+  Timeout: 60 seconds
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Agent execution time exceeded limit
+- Slow model response
+- Network connection issues</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Solution 1: Increase timeout
+@timeout(seconds=120)
+agent Analyst {
+    role: &quot;Analyst&quot;,
+    prompt: &quot;...&quot;
+}
+
+// Solution 2: Use faster model
+agent Analyst {
+    role: &quot;Analyst&quot;,
+    prompt: &quot;...&quot;,
+    model: &quot;gpt-3.5-turbo&quot;  // Faster than gpt-4
+}
+
+// Solution 3: Add fallback
+agent Analyst {
+    role: &quot;Analyst&quot;,
+    prompt: &quot;...&quot;,
+    fallback: &quot;gpt-3.5-turbo&quot;
+}
+</code></pre></div>
+<hr />
+<h3 id="e102-model-call-failed">E102 - Model Call Failed<a class="headerlink" href="#e102-model-call-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E102: Model API call failed
+  Model: &#39;gpt-4&#39;
+  Status: 429 - Rate limit exceeded
+  Message: You have exceeded your API rate limit
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- API key invalid or expired
+- API quota exhausted
+- Network connection issues
+- Model service unavailable</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check API key</span>
+nexa<span class="w"> </span>doctor
+
+<span class="c1"># Update key configuration</span>
+nexa<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>api.openai_key<span class="w"> </span><span class="s2">&quot;sk-xxx&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// Add fallback model
+agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    model: &quot;gpt-4&quot;,
+    fallback: &quot;gpt-3.5-turbo&quot;  // Downgrade when main model fails
+}
+</code></pre></div>
+<hr />
+<h3 id="e103-protocol-validation-failed">E103 - Protocol Validation Failed<a class="headerlink" href="#e103-protocol-validation-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E103: Protocol validation failed
+  Agent: &#39;Reporter&#39;
+  Protocol: &#39;Report&#39;
+  Missing fields: [&#39;summary&#39;]
+  Invalid fields: {&#39;score&#39;: &#39;expected number, got string&#39;}
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Agent output doesn't match Protocol-defined format
+- Field type mismatch</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Check Protocol definition
+protocol Report {
+    title: &quot;string&quot;,
+    summary: &quot;string&quot;,   // Ensure required fields
+    score: &quot;number&quot;      // Ensure correct type
+}
+
+// Optimize Agent prompt to ensure output format
+agent Reporter implements Report {
+    role: &quot;Reporter&quot;,
+    prompt: &quot;&quot;&quot;
+    Generate structured report, must include the following fields:
+    - title: Report title (string)
+    - summary: Report summary (string)
+    - score: Rating (number, 0-100)
+    &quot;&quot;&quot;
+}
+</code></pre></div>
+<hr />
+<h3 id="e104-tool-execution-error">E104 - Tool Execution Error<a class="headerlink" href="#e104-tool-execution-error" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E104: Tool execution error
+  Tool: &#39;web_search&#39;
+  Error: Connection timeout
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- External service depended on by tool is unavailable
+- Network connection issues
+- Tool parameter errors</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Add error handling
+try {
+    result = web_search.run(query);
+} catch (error) {
+    print(&quot;Search failed: &quot; + error);
+    result = &quot;Unable to perform search&quot;;
+}
+</code></pre></div>
+<hr />
+<h3 id="e105-authentication-failed">E105 - Authentication Failed<a class="headerlink" href="#e105-authentication-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E105: Authentication failed
+  Service: OpenAI API
+  Reason: Invalid API key
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- API key invalid or expired
+- Key not properly configured</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check environment configuration</span>
+nexa<span class="w"> </span>doctor
+
+<span class="c1"># Configure key</span>
+<span class="c1"># Method 1: Environment variable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">&quot;sk-xxx&quot;</span>
+
+<span class="c1"># Method 2: secrets.nxs file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;OPENAI_API_KEY: &quot;sk-xxx&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>secrets.nxs
+
+<span class="c1"># Method 3: Configuration command</span>
+nexa<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>api.openai_key<span class="w"> </span><span class="s2">&quot;sk-xxx&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="e106-loop-exceeded-maximum-iterations">E106 - Loop Exceeded Maximum Iterations<a class="headerlink" href="#e106-loop-exceeded-maximum-iterations" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E106: Loop exceeded maximum iterations
+  Loop: line 45
+  Max iterations: 10
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- <code>loop until</code> condition never satisfied
+- Logic error causing infinite loop</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Potential infinite loop
+loop {
+    draft = Editor.run(feedback);
+    feedback = Critic.run(draft);
+} until (&quot;Perfect&quot;)  // Condition too strict, may never be satisfied
+
+// ✅ Correct: Add safe exit
+max_iterations = 5;
+count = 0;
+loop {
+    draft = Editor.run(feedback);
+    feedback = Critic.run(draft);
+    count = count + 1;
+    if count &gt;= max_iterations {
+        print(&quot;Reached maximum iterations&quot;);
+        break;
+    }
+} until (&quot;Article quality acceptable&quot;)
+</code></pre></div>
+<hr />
+<h3 id="e107-intent-match-failed">E107 - Intent Match Failed<a class="headerlink" href="#e107-intent-match-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Runtime Error E107: No intent matched
+  Input: &quot;Book me a flight ticket&quot;
+  Available intents: [&quot;Check weather&quot;, &quot;Set reminder&quot;, &quot;Play music&quot;]
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- <code>match intent</code> didn't match any branch
+- Missing default branch <code>_</code></p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Missing default branch
+match user_input {
+    intent(&quot;Check weather&quot;) =&gt; WeatherBot.run(user_input),
+    intent(&quot;Set reminder&quot;) =&gt; ReminderBot.run(user_input)
+    // Error if neither matches
+}
+
+// ✅ Correct: Add default branch
+match user_input {
+    intent(&quot;Check weather&quot;) =&gt; WeatherBot.run(user_input),
+    intent(&quot;Set reminder&quot;) =&gt; ReminderBot.run(user_input),
+    _ =&gt; DefaultBot.run(user_input)  // Fallback handling
+}
+</code></pre></div>
+<hr />
+<h2 id="3-configuration-errors-e2xx">3. Configuration Errors (E2xx)<a class="headerlink" href="#3-configuration-errors-e2xx" title="Permanent link">&para;</a></h2>
+<p>Configuration errors relate to project configuration and environment settings.</p>
+<h3 id="e201-configuration-file-not-found">E201 - Configuration File Not Found<a class="headerlink" href="#e201-configuration-file-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E201: Configuration file not found
+  Path: ./nexa.yaml
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Configuration file doesn't exist
+- Configuration file path error</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Initialize configuration file</span>
+nexa<span class="w"> </span>config<span class="w"> </span>init
+
+<span class="c1"># Or specify configuration file path</span>
+nexa<span class="w"> </span>run<span class="w"> </span>main.nexa<span class="w"> </span>--config<span class="w"> </span>./config/nexa.yaml
+</code></pre></div>
+<hr />
+<h3 id="e202-invalid-configuration-value">E202 - Invalid Configuration Value<a class="headerlink" href="#e202-invalid-configuration-value" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E202: Invalid configuration value
+  Key: model.temperature
+  Value: &quot;hot&quot;
+  Expected: number between 0 and 2
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Configuration value type or range error</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ❌ Wrong</span>
+<span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hot&quot;</span>
+
+<span class="c1"># ✅ Correct</span>
+<span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">temperature</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7</span><span class="w">  </span><span class="c1"># 0.0 - 2.0</span>
+</code></pre></div>
+<hr />
+<h3 id="e203-secrets-file-error">E203 - Secrets File Error<a class="headerlink" href="#e203-secrets-file-error" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E203: Secrets file error
+  File: secrets.nxs
+  Reason: File format invalid
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- <code>secrets.nxs</code> file format error
+- Secrets file permission issues</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check file format</span>
+cat<span class="w"> </span>secrets.nxs
+
+<span class="c1"># Ensure correct format</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;OPENAI_API_KEY: &quot;sk-xxx&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>secrets.nxs
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ANTHROPIC_API_KEY: &quot;sk-ant-xxx&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>secrets.nxs
+
+<span class="c1"># Set correct file permissions</span>
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>secrets.nxs
+</code></pre></div>
+<hr />
+<h2 id="4-tool-and-mcp-errors-e3xx">4. Tool and MCP Errors (E3xx)<a class="headerlink" href="#4-tool-and-mcp-errors-e3xx" title="Permanent link">&para;</a></h2>
+<h3 id="e301-mcp-server-connection-failed">E301 - MCP Server Connection Failed<a class="headerlink" href="#e301-mcp-server-connection-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E301: MCP server connection failed
+  Server: web-search-mcp
+  Reason: Connection refused
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- MCP server not started or unreachable
+- Network connection issues</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check MCP server status</span>
+nexa<span class="w"> </span>mcp<span class="w"> </span><span class="nb">test</span><span class="w"> </span>web-search
+
+<span class="c1"># Re-add MCP server</span>
+nexa<span class="w"> </span>mcp<span class="w"> </span>remove<span class="w"> </span>web-search
+nexa<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>web-search<span class="w"> </span><span class="s2">&quot;github.com/nexa-ai/web-search-mcp&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="e302-tool-parameter-validation-failed">E302 - Tool Parameter Validation Failed<a class="headerlink" href="#e302-tool-parameter-validation-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E302: Tool parameter validation failed
+  Tool: &#39;web_search&#39;
+  Parameter: &#39;query&#39;
+  Error: Required parameter missing
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Missing required parameters when calling tool
+- Parameter type mismatch</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Missing required parameter
+result = web_search.run();
+
+// ✅ Correct: Provide required parameter
+result = web_search.run(query: &quot;Nexa language&quot;);
+</code></pre></div>
+<hr />
+<h3 id="e303-standard-library-tool-not-found">E303 - Standard Library Tool Not Found<a class="headerlink" href="#e303-standard-library-tool-not-found" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E303: Standard library tool not found
+  Tool: &#39;std.json.parse&#39;
+  Reason: Tool not registered in namespace
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Tool namespace spelling error
+- Using non-existent tool</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Namespace spelling error
+result = std.json.parse(text);  // Correct
+
+// ❌ Wrong: Using old naming convention
+result = std.fs.read(path);     // New version: std.fs.file_read
+
+// ✅ Correct: Use full tool name
+result = std.json.json_parse(text);
+result = std.fs.file_read(path);
+</code></pre></div>
+<hr />
+<h2 id="41-avm-runtime-errors-e4xx-v10-alpha">4.1 AVM Runtime Errors (E4xx) - v1.0-alpha<a class="headerlink" href="#41-avm-runtime-errors-e4xx-v10-alpha" title="Permanent link">&para;</a></h2>
+<h3 id="e401-avm-bytecode-execution-failed">E401 - AVM Bytecode Execution Failed<a class="headerlink" href="#e401-avm-bytecode-execution-failed" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E401: AVM bytecode execution failed
+  Opcode: FireForget
+  Reason: Agent list cannot be empty
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- DAG operator parameter configuration error
+- Invalid Agent ID</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// ❌ Wrong: Empty Agent list
+notification || [];  // Cannot use empty list
+
+// ✅ Correct: Specify at least one Agent
+notification || [EmailBot];
+</code></pre></div>
+<hr />
+<h3 id="e402-wasm-sandbox-permission-denied">E402 - WASM Sandbox Permission Denied<a class="headerlink" href="#e402-wasm-sandbox-permission-denied" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E402: WASM sandbox permission denied
+  Tool: &#39;shell_exec&#39;
+  Required: Elevated
+  Current: Standard
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Tool requires higher permission level
+- WASM resource limit exceeded</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Declare required permissions in agent definition
+agent SystemAgent uses std.shell {
+    role: &quot;System Management Assistant&quot;,
+    prompt: &quot;...&quot;,
+    // Need to elevate permissions in runtime configuration
+}
+</code></pre></div>
+<hr />
+<h3 id="e403-vector-memory-page-overflow">E403 - Vector Memory Page Overflow<a class="headerlink" href="#e403-vector-memory-page-overflow" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E403: Vector memory page overflow
+  Active pages: 256
+  Max allowed: 128
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Conversation history too long exceeds memory limit
+- Page compression not enabled</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Use memory property to control memory length
+agent LongConversationBot {
+    role: &quot;Long Conversation Assistant&quot;,
+    memory: &quot;compressed&quot;,  // Enable compression mode
+    // Or limit memory turns
+}
+</code></pre></div>
+<hr />
+<h3 id="e404-consensus-operation-timeout">E404 - Consensus Operation Timeout<a class="headerlink" href="#e404-consensus-operation-timeout" title="Permanent link">&para;</a></h3>
+<p><strong>Error Message</strong>:
+<div class="highlight"><pre><span></span><code>Error E404: Consensus operation timeout
+  Agents: [ExpertA, ExpertB, ExpertC]
+  Waited: 60s
+  Completed: 2/3
+</code></pre></div></p>
+<p><strong>Cause</strong>:
+- Consensus operator <code>&amp;&amp;</code> wait timeout
+- Some Agents not responding</p>
+<p><strong>Solution</strong>:</p>
+<div class="highlight"><pre><span></span><code>// Use timeout decorator to control wait time
+@timeout(seconds=120)
+agent ConsensusJudge {
+    role: &quot;Consensus Judge&quot;,
+    prompt: &quot;...&quot;
+}
+
+// Or use fire-forget instead
+decision = question || [ExpertA, ExpertB, ExpertC];
+</code></pre></div>
+<hr />
+<h2 id="5-warning-messages-w0xx">5. Warning Messages (W0xx)<a class="headerlink" href="#5-warning-messages-w0xx" title="Permanent link">&para;</a></h2>
+<p>Warnings don't prevent program execution, but it's recommended to fix them to avoid potential issues.</p>
+<h3 id="w001-unused-declaration">W001 - Unused Declaration<a class="headerlink" href="#w001-unused-declaration" title="Permanent link">&para;</a></h3>
+<p><strong>Warning Message</strong>:
+<div class="highlight"><pre><span></span><code>Warning W001: Unused agent &#39;TempAgent&#39;
+  --&gt; main.nexa:15:1
+</code></pre></div></p>
+<p><strong>Solution</strong>:
+- Delete unused declaration, or
+- Use the declaration in code</p>
+<hr />
+<h3 id="w002-performance-warning">W002 - Performance Warning<a class="headerlink" href="#w002-performance-warning" title="Permanent link">&para;</a></h3>
+<p><strong>Warning Message</strong>:
+<div class="highlight"><pre><span></span><code>Warning W002: Potential performance issue
+  Agent &#39;SlowAgent&#39; has high temperature (1.5) and long prompt
+  This may cause inconsistent or slow responses
+</code></pre></div></p>
+<p><strong>Solution</strong>:
+- Lower <code>temperature</code> value
+- Simplify prompt
+- Use faster model</p>
+<hr />
+<h3 id="w003-deprecation-warning">W003 - Deprecation Warning<a class="headerlink" href="#w003-deprecation-warning" title="Permanent link">&para;</a></h3>
+<p><strong>Warning Message</strong>:
+<div class="highlight"><pre><span></span><code>Warning W003: Deprecated feature
+  &#39;semantic_match&#39; is deprecated, use &#39;semantic_if&#39; instead
+</code></pre></div></p>
+<p><strong>Solution</strong>:
+- Update code to use new syntax</p>
+<hr />
+<h2 id="6-error-handling-best-practices">6. Error Handling Best Practices<a class="headerlink" href="#6-error-handling-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="61-use-trycatch">6.1 Use try/catch<a class="headerlink" href="#61-use-trycatch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>flow main(input: string) {
+    try {
+        result = RiskyAgent.run(input);
+        print(result);
+    } catch (error) {
+        print(&quot;Execution failed: &quot; + error);
+        result = FallbackAgent.run(input);
+    }
+}
+</code></pre></div>
+<h3 id="62-add-fallback">6.2 Add Fallback<a class="headerlink" href="#62-add-fallback" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>agent MyAgent {
+    role: &quot;Assistant&quot;,
+    prompt: &quot;...&quot;,
+    model: &quot;gpt-4&quot;,
+    fallback: &quot;gpt-3.5-turbo&quot;  // Auto downgrade when main model fails
+}
+</code></pre></div>
+<h3 id="63-set-reasonable-timeout">6.3 Set Reasonable Timeout<a class="headerlink" href="#63-set-reasonable-timeout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>@timeout(seconds=30)
+agent QuickAgent {
+    role: &quot;Quick Response Assistant&quot;,
+    prompt: &quot;Answer user questions concisely&quot;
+}
+</code></pre></div>
+<h3 id="64-prevent-infinite-loops">6.4 Prevent Infinite Loops<a class="headerlink" href="#64-prevent-infinite-loops" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>max_iterations = 5;
+count = 0;
+loop {
+    // ... loop body
+    count = count + 1;
+    if count &gt;= max_iterations {
+        break;
+    }
+} until (&quot;Condition satisfied&quot;)
+</code></pre></div>
+<hr />
+<h2 id="related-resources">🔗 Related Resources<a class="headerlink" href="#related-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../troubleshooting/">Troubleshooting Guide</a></li>
+<li><a href="../cli_reference/">CLI Command Reference</a></li>
+<li><a href="../reference/">Language Reference Manual</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<section class="md-comments" aria-label="评论区">
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="ouyangyipeng/Nexa-docs"
+    data-repo-id="R_kgDORpFikw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORpFik84C4knT"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async
+  ></script>
+  <script>
+    var giscus = document.querySelector("script[src*=\"giscus\"]")
+    function resolveGiscusTheme() {
+      var palette = typeof __md_get === "function" ? __md_get("__palette") : null
+      if (palette && typeof palette.color === "object") {
+        return palette.color.scheme === "slate" ? "transparent_dark" : "light"
+      }
+      return "light"
+    }
+    if (giscus) {
+      giscus.setAttribute("data-theme", resolveGiscusTheme())
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      var ref = document.querySelector("[data-md-component=\"palette\"]")
+      if (!ref) { return }
+      ref.addEventListener("change", function () {
+        var frame = document.querySelector(".giscus-frame")
+        if (!frame || !frame.contentWindow) { return }
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: resolveGiscusTheme() } } },
+          "https://giscus.app"
+        )
+      })
+    })
+  </script>
+</section>
+
+                
+  <div
+  class="yat-agent"
+  data-yat-agent
+  data-search-index-url="../../search/search_index.json"
+  data-current-page="error_index.en.md"
+  data-current-title="Error Index"
+>
+  <div class="yat-agent__nudge" data-agent-nudge>
+    <span>快来问问agent吧！</span>
+    <button class="yat-agent__nudge-close" type="button" data-agent-dismiss-nudge aria-label="关闭提示">×</button>
+  </div>
+  <button class="yat-agent__fab" type="button" aria-expanded="false" aria-controls="yat-agent-panel" aria-label="打开文档助手">
+    <img class="yat-agent__fab-logo" src="../../img/nexa-logo-noframe.png" alt="">
+  </button>
+
+  <section class="yat-agent__panel" id="yat-agent-panel" aria-label="文档助手">
+    <header class="yat-agent__header">
+      <div>
+        <p class="yat-agent__eyebrow">Nexa Agent</p>
+        <h2>Nexa 文档助手</h2>
+      </div>
+      <button class="yat-agent__icon-button" type="button" data-agent-close aria-label="关闭对话窗">关闭</button>
+    </header>
+
+    <div class="yat-agent__messages" data-agent-messages aria-live="polite">
+      <article class="yat-agent__message yat-agent__message--assistant yat-agent__message--intro">
+        <p>我是Nexa文档AI助手，可以问我有关文档的一切！</p>
+      </article>
+    </div>
+
+    <form class="yat-agent__composer" data-agent-form>
+      <textarea
+        class="yat-agent__input"
+        name="prompt"
+        rows="1"
+        placeholder="Nexa的>>操作符可以怎么用？"
+        required
+      ></textarea>
+      <div class="yat-agent__composer-actions">
+        <span class="yat-agent__meta" data-agent-status data-ready="true">
+          <span class="yat-agent__meta-dot" aria-hidden="true"></span>
+          <span>由AI Hub提供支持</span>
+        </span>
+        <button class="md-button md-button--primary yat-agent__send" type="submit">发送</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script type="module" src="../../javascripts/doc-agent.js"></script>
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../stdlib_reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stdlib API">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Stdlib API
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../javascripts/navigation-accordion.js"></script>
+      
+        <script src="../../javascripts/image-lightbox.js"></script>
+      
+    
+  </body>
+</html>
